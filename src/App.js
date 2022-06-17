@@ -1,28 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import { useFeaturedBanners } from './utils/hooks/useFeaturedBanners';
+import Header from './common/header'
+import Footer from './common/footer'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from './pages/homePage';
 
 function App() {
-  const { data, isLoading } = useFeaturedBanners();
-  console.log(data, isLoading);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+        <Routes>
+          <Route path='/' exact element={
+            <HomePage />
+          }/>
+        </Routes>
+      <Footer />
+    </Router>
   );
 }
 
