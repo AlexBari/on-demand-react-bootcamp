@@ -1,6 +1,6 @@
 import './App.css';
-import Header from './common/Header'
-import Footer from './common/Footer'
+import Header from './common/Header';
+import Footer from './common/Footer';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage';
