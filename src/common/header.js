@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import SearchBar from '../components/SearchBar/searchBar';
-import ShoppingCart from '../components/ShoppingCar/shoppingCart'
-import SidebarNav from '../components/SidebarNav/sidebarNav'
+import SearchBar from '../components/searchbar/searchBar';
+import ShoppingCart from '../components/shoppingcar/shoppingCar'
+import SidebarNav from '../components/sidebarnav/sidebarNav'
 import NavMenu from './navMenu';
 import {
     Logo,

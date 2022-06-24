@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import NavMenu from '../../common/navMenu';
 import { SidebarBlock, HamburgerSpan, SideBarNavWrapper } from './sidebarNavComponents';
-import SearchBar from '../SearchBar/searchBar';
+import SearchBar from '../searchbar/searchBar';
 
 const SidebarNav = () => {
   const [isSidebar, initSidebar] = useState(false)
