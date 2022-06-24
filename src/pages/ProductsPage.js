@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Products from '../components/Products/Products';
 import ProductsSideBar from '../components/Products/ProductsSideBar';
 import { CapitalizeString } from '../utils/utils';
