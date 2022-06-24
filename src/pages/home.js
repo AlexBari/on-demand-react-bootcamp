@@ -8,7 +8,7 @@ import { StyledProductContainer } from '../components/products/productsComponent
 import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
 import { useFeaturedProducts } from '../utils/hooks/useFeaturedProducts';
 import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
-import { Loading } from '../common/loading';
+import Loading from '../common/loading.js';
 
 const HomePage = () => {
     const navigate = useNavigate();
