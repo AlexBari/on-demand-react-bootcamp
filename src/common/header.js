@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import SearchBar from '../components/searchbar/searchBar';
-import ShoppingCart from '../components/shoppingcar/shoppingCar'
-import SidebarNav from '../components/sidebarnav/sidebarNav'
+import SearchBar from '../components/searchBar/searchBar';
+import ShoppingCar from '../components/shoppinCcar/shoppingCar'
+import SidebarNav from '../components/sidebarNav/sidebarNav'
 import NavMenu from './navMenu';
 import {
     Logo,
@@ -32,7 +32,7 @@ const Header = () => {
                     <SearchBar header={'true'} />
                 </NavSearch>
                 <NavShoppingCart>
-                    <ShoppingCart />
+                    <ShoppingCar />
                 </NavShoppingCart>
             </NavStyledWrapper>
         </NavBar>
