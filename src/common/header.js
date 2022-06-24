@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import SearchBar from '../components/searchBar/searchBar';
-import ShoppingCar from '../components/shoppinCar/shoppingCar'
-import SidebarNav from '../components/sidebarNav/sidebarNav'
+import SearchBar from '../components/SearchBar/searchBar';
+import ShoppingCar from '../components/ShoppinCar/shoppingCar'
+import SidebarNav from '../components/SidebarNav/sidebarNav'
 import NavMenu from './navMenu';
 import {
     Logo,
@@ -16,17 +16,17 @@ import {
 
 const Header = () => {
     const navigate = useNavigate();
-    const RedirectHandler = () => {
+    const RedirectHandler = () => {
         navigate('/');
     }
     return (
         <NavBar>
             <NavStyledWrapper>
                 <SidebarNav />
-                <Logo id='logo' onClick={RedirectHandler}/>
+                <Logo id='logo' onClick={RedirectHandler} />
                 <LogoName onClick={RedirectHandler}>BlueFox</LogoName>
             </NavStyledWrapper>
-            <NavMenu header={'true'}/>
+            <NavMenu header={'true'} />
             <NavStyledWrapper>
                 <NavSearch>
                     <SearchBar header={'true'} />

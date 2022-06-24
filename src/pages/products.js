@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Products from '../components/products/products';
-import ProductsSideBar from '../components/products/productsSideBar';
+import Products from '../components/Products/products';
+import ProductsSideBar from '../components/Products/productsSideBar';
 import { CapitalizeString } from '../utils/utils';
 import Loading from '../common/loading';
-import { StyledProductContainer, StyledWrapper, StyledProductsSideBar } from '../components/products/productsComponents';
+import { StyledProductContainer, StyledWrapper, StyledProductsSideBar } from '../components/Products/productsComponents';
 import { useProducts } from '../utils/hooks/useProducts';
 import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
 import Pagination from '../common/pagination';
