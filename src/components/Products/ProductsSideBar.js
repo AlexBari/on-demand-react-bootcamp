@@ -11,6 +11,7 @@ const StyledCategoryRow = styled.div`
     border: 1px solid #79CED1;
     border-radius: 5px;
     margin: 1px 0px;
+    word-break: break-all;
     &:hover {
         color: black;
         background: rgb(182 233 234 / 80%);
