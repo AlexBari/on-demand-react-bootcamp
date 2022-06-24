@@ -3,9 +3,9 @@ import Header from './common/header';
 import Footer from './common/footer';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from './pages/Home';
-import ProductsPage from './pages/Products';
-import { NotFound } from './pages/NotFoundPage';
+import HomePage from './pages/home';
+import ProductsPage from './pages/products';
+import { NotFound } from './pages/not-found';
 
 const StyledWrapper = styled.div`
   position: relative;

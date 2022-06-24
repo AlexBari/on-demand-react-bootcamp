@@ -4,7 +4,7 @@ import {
     PageNumbersButton,
     PageNumbersLi,
     PageNumbersUl
-} from './paginationComponents';
+} from './pagination-components';
 
 const Pagination = (props) => {
     const pageNumberLimit = 5;
