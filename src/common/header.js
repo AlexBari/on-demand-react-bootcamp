@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/searchBar/searchBar';
-import ShoppingCar from '../components/shoppinCcar/shoppingCar'
+import ShoppingCar from '../components/shoppinCar/shoppingCar'
 import SidebarNav from '../components/sidebarNav/sidebarNav'
 import NavMenu from './navMenu';
 import {
