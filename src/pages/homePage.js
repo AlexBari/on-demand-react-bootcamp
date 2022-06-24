@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Slider from '../components/Slider/Slider';
-import Products from '../components/Products/Products';
-import Carousel from '../components/Carousel/Carousel';
-import { StyledBlueButton, StyledWrapper, StyledRoot } from './HomePageComponents';
-import { StyledProductContainer } from '../components/Products/ProductsComponents';
+import Slider from '../components/Slider/slider';
+import Products from '../components/Products/products';
+import Carousel from '../components/Carousel/carousel';
+import { StyledBlueButton, StyledWrapper, StyledRoot } from './homePageComponents';
+import { StyledProductContainer } from '../components/Products/productsComponents';
 import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
 import { useFeaturedProducts } from '../utils/hooks/useFeaturedProducts';
 import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
-import { Loading } from '../common/Loading';
+import { Loading } from '../common/loading';
 
 const HomePage = () => {
     const navigate = useNavigate();

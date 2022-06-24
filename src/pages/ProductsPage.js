@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Products from '../components/Products/Products';
-import ProductsSideBar from '../components/Products/ProductsSideBar';
+import Products from '../components/Products/products';
+import ProductsSideBar from '../components/Products/productsSideBar';
 import { CapitalizeString } from '../utils/utils';
-import { Loading } from '../common/Loading';
-import { StyledProductContainer, StyledWrapper, StyledProductsSideBar } from '../components/Products/ProductsComponents';
+import { Loading } from '../common/loading';
+import { StyledProductContainer, StyledWrapper, StyledProductsSideBar } from '../components/Products/productsComponents';
 import { useProducts } from '../utils/hooks/useProducts';
 import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
-import Pagination from '../common/Pagination';
+import Pagination from '../common/pagination';
 
 const ProductsPage = () => {
     const { data = [] } = useProducts();

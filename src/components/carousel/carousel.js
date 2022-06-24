@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import SliderContent from '../Slider/SliderContent';
-import Slide from '../Slider/Slide';
-import Dots from './Dot';
+import SliderContent from '../Slider/sliderContent';
+import Slide from '../Slider/slide';
+import Dots from './dot';
 
 const CarouselCSS = styled.div`
   position: relative;

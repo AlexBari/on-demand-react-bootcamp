@@ -1,11 +1,11 @@
 import './App.css';
-import Header from './common/Header';
-import Footer from './common/Footer';
+import Header from './common/header';
+import Footer from './common/footer';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from './pages/HomePage';
-import ProductsPage from './pages/ProductsPage';
-import { NotFound } from './pages/NotFoundPage';
+import HomePage from './pages/homePage';
+import ProductsPage from './pages/productsPage';
+import { NotFound } from './pages/notFoundPage';
 
 const StyledWrapper = styled.div`
   position: relative;

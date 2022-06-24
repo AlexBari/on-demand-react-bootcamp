@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import SliderContent from './SliderContent';
-import Slide from './Slide';
-import Arrow from './Arrow';
+import SliderContent from './sliderContent';
+import Slide from './slide';
+import Arrow from './arrow';
 
 const SliderCSS = styled.div`
   position: relative;

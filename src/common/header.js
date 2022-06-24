@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import SearchBar from '../components/SearchBar/SearchBar';
-import ShoppingCart from '../components/ShoppingCar/ShoppingCart'
-import SidebarNav from '../components/SidebarNav/SidebarNav'
-import NavMenu from './NavMenu';
+import SearchBar from '../components/SearchBar/searchBar';
+import ShoppingCart from '../components/ShoppingCar/shoppingCart'
+import SidebarNav from '../components/SidebarNav/sidebarNav'
+import NavMenu from './navMenu';
 import {
     Logo,
     LogoName,
@@ -12,7 +12,7 @@ import {
     NavSearch,
     NavShoppingCart
 
-} from './HeaderComponents'
+} from './headerComponents'
 
 const Header = () => {
     const navigate = useNavigate();
