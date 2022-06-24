@@ -61,11 +61,6 @@ const Carousel = ({ slides, autoPlay }) => {
         return () => {
             window.removeEventListener('resize', onResize);
             clearInterval(interval);
-            setCarouselState({
-                activeIndex: 0,
-                translate: 0,
-                transition: 0.45
-            });
         }
     }, [slides.length, activeIndex, autoPlay]);
 
