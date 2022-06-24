@@ -4,7 +4,7 @@ import Footer from './common/footer';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from './pages/homePage';
-import ProductsPage from './pages/Products';
+import ProductsPage from './pages/productsPage';
 import { NotFound } from './pages/notFoundPage';
 
 const StyledWrapper = styled.div`

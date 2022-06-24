@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import SliderContent from '../Slider/sliderContent';
-import Slide from '../Slider/slide';
+import SliderContent from '../slider/sliderContent';
+import Slide from '../slider/slide';
 import Dots from './dot';
 
 const CarouselCSS = styled.div`

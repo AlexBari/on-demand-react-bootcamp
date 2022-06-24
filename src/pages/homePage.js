@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Slider from '../components/Slider/slider';
-import Products from '../components/Products/products';
-import Carousel from '../components/Carousel/carousel';
-import { StyledBlueButton, StyledWrapper, StyledRoot } from './homePageCompoents';
-import { StyledProductContainer } from '../components/Products/productsComponents';
+import Slider from '../components/slider/slider';
+import Products from '../components/products/products';
+import Carousel from '../components/carousel/carousel';
+import { StyledBlueButton, StyledWrapper, StyledRoot } from './homePageComponents';
+import { StyledProductContainer } from '../components/products/productsComponents';
 import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
 import { useFeaturedProducts } from '../utils/hooks/useFeaturedProducts';
 import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
