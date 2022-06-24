@@ -5,7 +5,7 @@ import {
     SearchButton,
     SearchInput,
     MagnifyingGlass
-} from './search-bar-components'
+} from './searchBarComponents'
 
 const SearchBar = ({header}) => {
 

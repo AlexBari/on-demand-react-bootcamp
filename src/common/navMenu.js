@@ -2,7 +2,7 @@ import React from 'react';
 import {
     NavMenuWrapper,
     NavLink,
-} from './header-components';
+} from './headerComponents';
 
 const NavMenu = ({header}) => {
     return (

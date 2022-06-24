@@ -8,7 +8,7 @@ import {
   Category,
   Price,
   StyledContainer
-} from './product-card-components'
+} from './productCardComponents'
 
 const ProductCard = ({ data }) => {
   return (
