@@ -1,60 +1,55 @@
 import React from 'react';
-import styled from 'styled-components';
-import Slider from '../components/slider/slider';
-import Products from '../components/products/products';
-import Carousel from '../components/carousel/carousel';
+import { useNavigate } from 'react-router-dom';
+import Slider from '../components/Slider/Slider';
+import Products from '../components/Products/Products';
+import Carousel from '../components/Carousel/Carousel';
+import { StyledBlueButton, StyledWrapper, StyledRoot } from './HomePageComponents';
+import { StyledProductContainer } from '../components/Products/ProductsComponents';
 import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
 import { useFeaturedProducts } from '../utils/hooks/useFeaturedProducts';
-import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories'
-
-const StyledWrapper = styled.div`
-    position: relative;
-    display: grid;
-    place-items: center;
-`;
-
-const StyledRoot = styled.div`
-    width: 90vw;
-    padding: 50px 12px;
-`;
-
-const StyledContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 250px); 
-    grid-auto-rows: auto; 
-    grid-gap: 1rem;
-    place-items: center;
-`;
+import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
+import { Loading } from '../common/Loading';
 
 const HomePage = () => {
+    const navigate = useNavigate();
     const { data: banners, isLoading: isBannersLoading } = useFeaturedBanners();
     const { data: categories, isLoading: isCategoriesLoading } = useFeaturedCategories();
     const { data: products, isLoading: isProductsLoading } = useFeaturedProducts();
+
+    const RedirectHandler = () => {
+        navigate('/productsPage');
+    }
+
     return (
         <StyledWrapper>
             <div>
                 {
                     !isBannersLoading
                         ? <Slider id="slider" slides={banners.results} />
-                        : 'Loading...'
+                        : <Loading />
                 }
             </div>
             <div style={{ margin: '2rem 0' }}>
                 {
                     !isCategoriesLoading
                         ? <Carousel id="slider" slides={categories.results} autoPlay={6} />
-                        : 'Loading...'
+                        : <Loading />
                 }
             </div>
             <StyledRoot>
-                <StyledContainer>
+                <StyledProductContainer isLoading={isProductsLoading}>
                     {
                         !isProductsLoading
                             ? <Products products={products.results} />
-                            : 'Loading...'
+                            : <Loading />
                     }
-                </StyledContainer>
+                </StyledProductContainer>
             </StyledRoot>
+            <div>
+                <StyledBlueButton onClick={RedirectHandler}>
+                    View All Products
+                </StyledBlueButton>
+            </div>
         </StyledWrapper>
     )
 }

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import SliderContent from '../slider/sliderContent';
-import Slide from '../slider/slide';
-import Dots from './dot';
+import SliderContent from '../Slider/SliderContent';
+import Slide from '../Slider/Slide';
+import Dots from './Dot';
 
 const CarouselCSS = styled.div`
   position: relative;
@@ -25,11 +25,26 @@ const Carousel = ({ slides, autoPlay }) => {
     const autoPlayRef = useRef();
 
     useEffect(() => {
-        resizeRef.current = handleResize;
-        autoPlayRef.current = nextSlide;
-    });
+        const nextSlide = () => {
+            if (activeIndex === slides.length - 1) {
+                return setCarouselState((prev) => ({
+                    ...prev,
+                    translate: 0,
+                    activeIndex: 0
+                }))
+            }
+    
+            setCarouselState((prev) => ({
+                ...prev,
+                activeIndex: activeIndex + 1,
+                translate: (activeIndex + 1) * getWidth()
+            }))
+        };
 
-    useEffect(() => {
+        const handleResize = () => {
+            setCarouselState((prev) => ({ ...prev, translate: getWidth(), transition: 0 }))
+        };
+
         const resize = () => {
             resizeRef.current()
         }
@@ -37,37 +52,26 @@ const Carousel = ({ slides, autoPlay }) => {
             autoPlayRef.current()
         }
 
+
         const interval = setInterval(play, autoPlay * 1000)
         const onResize = window.addEventListener('resize', resize);
+    
+        resizeRef.current = handleResize;
+        autoPlayRef.current = nextSlide;
         return () => {
             window.removeEventListener('resize', onResize);
             clearInterval(interval);
+            setCarouselState({
+                activeIndex: 0,
+                translate: 0,
+                transition: 0.45
+            });
         }
-    }, [autoPlay]);
+    }, [slides.length, activeIndex, autoPlay]);
 
     useEffect(() => {
         if (transition === 0) setCarouselState((prev) => ({ ...prev, transition: 0.45 }))
     }, [transition]);
-
-    const nextSlide = () => {
-        if (activeIndex === slides.length - 1) {
-            return setCarouselState((prev) => ({
-                ...prev,
-                translate: 0,
-                activeIndex: 0
-            }))
-        }
-
-        setCarouselState((prev) => ({
-            ...prev,
-            activeIndex: activeIndex + 1,
-            translate: (activeIndex + 1) * getWidth()
-        }))
-    };
-
-    const handleResize = () => {
-        setCarouselState((prev) => ({ ...prev, translate: getWidth(), transition: 0 }))
-    };
 
     return (
         <CarouselCSS>
