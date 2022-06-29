@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledCategoryRow = styled.div`
     display: flex;
     justify-content: flex-start;
     place-items: center;
-    height: 7vh;
+    height: 50px;
     padding: 5px;
     cursor: pointer;
     border: 1px solid #79CED1;
@@ -23,24 +24,43 @@ const StyledCategoryRow = styled.div`
 `;
 
 
-const ProductsSideBar = ({ categories, filteringProducts }) => {
+const ProductsSideBar = ({ categories, filteringProducts, categoriesSelected }) => {
     const onSelectCategory = (e, obj) => {
-        if (e.target.classList.contains('active')){
+        if (e.target.classList.contains('active')) {
             e.target.classList.remove('active');
             filteringProducts(obj, 'remove')
         } else {
             e.target.classList.add('active');
-            filteringProducts(obj,'add')
+            filteringProducts(obj, 'add')
         }
     };
 
-    return categories.map((obj, i) =>
-        <StyledCategoryRow
-            key={'cat-' + i}
-            onClick={(e) => onSelectCategory(e, obj)}>
-            {obj}
-        </StyledCategoryRow>
+    const isFilterActivated = (category) => {
+        let className = '';
+        if (categoriesSelected.filter((cat) => cat === category).length > 0)
+            className = 'active';
+        return className
+    };
+
+    return (
+        categories.map((obj, i) =>
+            <StyledCategoryRow
+                key={'cat-' + i}
+                onClick={(e) => onSelectCategory(e, obj)}
+                className={
+                    isFilterActivated(obj)
+                }
+            >
+                {obj}
+            </StyledCategoryRow>
+        )
     );
+};
+
+ProductsSideBar.propType = {
+    categories: PropTypes.array,
+    filteringProducts: PropTypes.func,
+    categoriesSelected: PropTypes.array
 };
 
 export default ProductsSideBar;

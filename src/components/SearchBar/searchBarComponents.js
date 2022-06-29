@@ -25,7 +25,7 @@ export const SearchButton = styled.button`
         border-radius: 1rem;
         background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 980px) {
       display: ${ props => props.header === 'true'? 'none' : 'flex'};
       color: black;
       border: 1px solid black;
@@ -48,7 +48,7 @@ export const SearchInput = styled.input`
     width: 13rem;
     border-radius: 1rem;
     padding: 2px 5px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 980px) {
       display: ${ props => props.header === 'true'? 'none' : 'flex'};
       margin: 10px 5px;
       width: 10rem;

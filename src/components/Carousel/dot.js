@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledDotSpan = styled.span`
@@ -29,5 +30,14 @@ const Dots = ({ slides, activeIndex }) => (
         ))}
     </StyledDotsSpan>
 )
+
+Dot.propType = {
+    active: PropTypes.bool
+};
+
+Dots.propType = {
+    slides: PropTypes.array,
+    activeIndex: PropTypes.number
+};
 
 export default Dots

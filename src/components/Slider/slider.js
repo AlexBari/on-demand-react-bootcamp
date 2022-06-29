@@ -1,18 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SliderContent from './sliderContent';
 import Slide from './slide';
 import Arrow from './arrow';
+import Dots from '../Carousel/dot';
 
 const SliderCSS = styled.div`
   position: relative;
   height: 60vh;
-  width: 95vw;
-  margin: 0 auto;
+  width: ${ props => props.sliderWidth ? props.sliderWidth : '95vw'};
+  margin: 20px auto;
   overflow: hidden;
 `;
 
-const Slider = ({ slides = [], autoPlay }) => {
+const Slider = ({ slides = [], autoPlay, isContain, sliderWidth }) => {
     const getWidth = () => window.innerWidth;
     const [sliderState, setSliderState] = useState({
         activeIndex: 0,
@@ -72,29 +74,34 @@ const Slider = ({ slides = [], autoPlay }) => {
             translate: (activeIndex - 1) * getWidth()
         }));
     }
+
     const handleResize = () => {
         setSliderState((prev) => ({ ...prev, translate: getWidth(), transition: 0 }))
     }
 
     return (
-        <SliderCSS>
+        <SliderCSS sliderWidth={sliderWidth}>
             <SliderContent
                 translate={translate}
                 transition={transition}
-                width={getWidth() * slides.length}
+                width={(getWidth() * slides.length)}
             >
                 {
-                    slides.map((slide, i) => <Slide key={`${slide.id}-slide-${i}`} data={slide.data} />)
+                    slides.map((slide, i) => <Slide key={`${slide.id}-slide-${i}`} data={slide.data} isContain={isContain}/>)
                 }
             </SliderContent>
+            <Dots slides={slides} activeIndex={activeIndex} />
             <Arrow direction="left" handleClick={prevSlide} />
             <Arrow direction="right" handleClick={nextSlide} />
         </SliderCSS>
     )
 }
 
-Slider.defaultProps = {
-    slides: [],
+Slider.propTypes = {
+    slides: PropTypes.array,
+    autoPlay: PropTypes.bool,
+    isContain: PropTypes.bool,
+    sliderWidth: PropTypes.number
 }
 
 export default Slider;

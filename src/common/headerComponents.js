@@ -28,7 +28,7 @@ export const NavBar = styled.nav`
   padding: 0 calc((100vw - 96%) / 2);
   z-index: 100;
   color: white;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 980px) {
       position: fixed;
       width: 100%
   }
@@ -53,9 +53,9 @@ export const NavShoppingCart = styled(AiOutlineShoppingCart)`
 export const NavMenuWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-right: -24px;
+  margin-right: -15%;
   white-space: nowrap;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 980px) {
     display: ${ props => props.header === 'true' ? 'none' : 'grid' };
     margin: 0px;
   }
@@ -95,7 +95,7 @@ export const NavLink = styled(Link)`
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 980px) {
     display: ${ props => props.header === 'true' ? 'none' : 'flex' };
     color: black;
     font-weight: bold;
@@ -117,7 +117,7 @@ export const NavSearch = styled.nav`
   display: flex;
   align-items: center;
   margin-right: 24px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 980px) {
     display: none;
   }
 `;

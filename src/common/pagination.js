@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
     MainWrapper,
     PageNumbersButton,
     PageNumbersLi,
-    PageNumbersUl
+    PageNumbersUl,
+    HellipLi
 } from './paginationComponents';
 
 const Pagination = (props) => {
@@ -15,16 +17,13 @@ const Pagination = (props) => {
     const [minPageLimit, setMinPageLimit] = useState(0);
     const totalPages = props.totalPages;
 
-    const onPageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    }
-
     const onPrevClick = () => {
         if ((currentPage - 1) % pageNumberLimit === 0) {
             setMaxPageLimit(maxPageLimit - pageNumberLimit);
             setMinPageLimit(minPageLimit - pageNumberLimit);
         }
         setCurrentPage(prev => prev - 1);
+        props.pageChange(currentPage - 1);
     }
 
     const onNextClick = () => {
@@ -33,6 +32,7 @@ const Pagination = (props) => {
             setMinPageLimit(minPageLimit + pageNumberLimit);
         }
         setCurrentPage(prev => prev + 1);
+        props.pageChange(currentPage + 1);
     }
 
     useEffect(() => {
@@ -45,13 +45,18 @@ const Pagination = (props) => {
     }, [totalPages]);
 
     useEffect(() => {
+        const onPageChange = (pageNumber) => {
+            setCurrentPage(pageNumber);
+            props.pageChange(pageNumber);
+        }
+
         setPageNumbers(pages.map(page => {
             if (page <= maxPageLimit && page > minPageLimit) {
                 return (
                     <PageNumbersLi
                         key={page}
                         id={page}
-                        onClick={onPageChange}
+                        onClick={() => onPageChange(page)}
                         className={currentPage === page ? 'active' : null}
                         style={{ padding: '14px' }}
                     >
@@ -62,7 +67,7 @@ const Pagination = (props) => {
                 return null;
             }
         }));
-    }, [currentPage, maxPageLimit, minPageLimit, pages]);
+    }, [currentPage, maxPageLimit, minPageLimit, pages, props]);
 
     return (
         <MainWrapper>
@@ -78,11 +83,11 @@ const Pagination = (props) => {
                     </PageNumbersLi>
                 }
                 {
-                    minPageLimit >= 1 && <li onClick={onPrevClick}>&hellip;</li>
+                    minPageLimit >= 1 && <HellipLi onClick={onPrevClick}>&hellip;</HellipLi>
                 }
                 {pageNumbers}
                 {
-                    pages.length > maxPageLimit && <li onClick={onNextClick}>&hellip;</li>
+                    pages.length > maxPageLimit && <HellipLi onClick={onNextClick}>&hellip;</HellipLi>
                 }
                 {totalPages > 1 &&
                     <PageNumbersLi>
@@ -98,4 +103,10 @@ const Pagination = (props) => {
         </MainWrapper>
     )
 }
+
+Pagination.propTypes = {
+    pageChange: PropTypes.func,
+    totalPages: PropTypes.number
+};
+
 export default Pagination;

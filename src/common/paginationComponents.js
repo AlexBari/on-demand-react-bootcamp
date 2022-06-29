@@ -42,3 +42,12 @@ export const PageNumbersButton = styled.button`
         outline: none;
     }
 `;
+
+export const HellipLi = styled.li`
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid black;
+    border-radius: 20px;
+`;

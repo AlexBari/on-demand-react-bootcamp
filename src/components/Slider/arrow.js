@@ -1,5 +1,6 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 
@@ -11,7 +12,7 @@ ${props => props.direction === 'right' ? `right: 25px` : `left: 25px`};
 height: 50px;
 width: 50px;
 justify-content: center;
-background: white;
+background: #a3a3a330;
 border-radius: 50%;
 cursor: pointer;
 align-items: center;
@@ -32,5 +33,10 @@ const Arrow = ({ direction, handleClick }) => (
     {direction === 'right' ? <FiArrowRight /> : <FiArrowLeft />}
   </ArrowDiv>
 )
+
+Arrow.propTypes = {
+  direction: PropTypes.string,
+  onClick: PropTypes.func
+};
 
 export default Arrow
