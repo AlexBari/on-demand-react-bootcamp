@@ -7,7 +7,7 @@ import {
     MagnifyingGlass
 } from './searchBarComponents'
 
-const SearchBar = () => {
+const SearchBar = ({header}) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -22,8 +22,9 @@ const SearchBar = () => {
                     id="header-search"
                     placeholder="Search"
                     name="search"
+                    header = {header}
                 />
-                <SearchButton type="submit">
+                <SearchButton header={header} type="submit">
                     <MagnifyingGlass />
                 </SearchButton>
             </SearchForm>

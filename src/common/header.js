@@ -1,39 +1,41 @@
 import React from 'react';
-import SearchBar from '../components/searchBar/searchBar';
-import ShoppingCart from '../components/shoppingCart/shoppingCart'
+import { useNavigate } from 'react-router-dom';
+import SearchBar from '../components/SearchBar/searchBar';
+import ShoppingCar from '../components/ShoppinCar/shoppingCar'
+import SidebarNav from '../components/SidebarNav/sidebarNav'
+import NavMenu from './navMenu';
 import {
     Logo,
     LogoName,
     NavBar,
     NavStyledWrapper,
-    NavLink,
-    NavMenu,
     NavSearch,
     NavShoppingCart
 
 } from './headerComponents'
 
 const Header = () => {
+    const navigate = useNavigate();
+    const RedirectHandler = () => {
+        navigate('/');
+    }
     return (
         <NavBar>
             <NavStyledWrapper>
-                <Logo id='logo'/>
-                <LogoName>BlueFox</LogoName>
+                <SidebarNav />
+                <Logo id='logo' onClick={RedirectHandler} />
+                <LogoName onClick={RedirectHandler}>BlueFox</LogoName>
             </NavStyledWrapper>
-            <NavMenu>
-                <NavLink to='/' activestyle='true'>
-                    Home
-                </NavLink>
-            </NavMenu>
+            <NavMenu header={'true'} />
             <NavStyledWrapper>
                 <NavSearch>
-                    <SearchBar />
+                    <SearchBar header={'true'} />
                 </NavSearch>
                 <NavShoppingCart>
-                    <ShoppingCart />
+                    <ShoppingCar />
                 </NavShoppingCart>
             </NavStyledWrapper>
-      </NavBar>
+        </NavBar>
     )
 }
 

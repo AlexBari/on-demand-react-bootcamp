@@ -19,12 +19,16 @@ export const SearchButton = styled.button`
     margin: 4px 2px;
     cursor: pointer;
     transition: 0.3s;
-    background: none;
     border-radius: 1rem;
     &:hover {
         color: black;
         border-radius: 1rem;
         background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+    }
+    @media screen and (max-width: 768px) {
+      display: ${ props => props.header === 'true'? 'none' : 'flex'};
+      color: black;
+      border: 1px solid black;
     }
 `;
 
@@ -44,4 +48,9 @@ export const SearchInput = styled.input`
     width: 13rem;
     border-radius: 1rem;
     padding: 2px 5px;
+    @media screen and (max-width: 768px) {
+      display: ${ props => props.header === 'true'? 'none' : 'flex'};
+      margin: 10px 5px;
+      width: 10rem;
+    }
 `;
