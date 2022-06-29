@@ -8,13 +8,19 @@ import { StyledProductContainer, StyledWrapper } from '../components/Products/pr
 
 const SearchPage = () => {
     const [searchParams] = useSearchParams();
-    const [totalPages, setTotalPages] = useState(1);
-    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState();
+    const [searchResults, setSearchResults] = useState();
+    const [page, setPage] = useState();
     const { data = [], isLoading } = useProducts(20, false, page, null, searchParams.get('q'));
 
     useEffect(() => {
+        setSearchResults(data.results);
         setTotalPages(data.total_pages);
-    }, [data]);
+        return (() => {
+            setSearchResults();
+            setTotalPages();
+        })
+    }, [data, setSearchResults]);
 
     return (
         <>
@@ -26,7 +32,7 @@ const SearchPage = () => {
                     ? <StyledProductContainer isLoading={isLoading} hasData={data.results && data.results.length > 0}>
                         {
                             !isLoading
-                                ? <Products products={data.results} searchTerm={searchParams.get('q')}/>
+                                ? <Products products={searchResults} searchTerm={searchParams.get('q')}/>
                                 : <Loading />
                         }
                     </StyledProductContainer>
