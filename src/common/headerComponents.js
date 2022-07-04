@@ -28,7 +28,11 @@ export const NavBar = styled.nav`
   padding: 0 calc((100vw - 96%) / 2);
   z-index: 100;
   color: white;
+<<<<<<< HEAD
   @media screen and (max-width: 980px) {
+=======
+  @media screen and (max-width: 768px) {
+>>>>>>> master
       position: fixed;
       width: 100%
   }
@@ -55,7 +59,11 @@ export const NavMenuWrapper = styled.div`
   align-items: center;
   margin-right: -15%;
   white-space: nowrap;
+<<<<<<< HEAD
   @media screen and (max-width: 980px) {
+=======
+  @media screen and (max-width: 768px) {
+>>>>>>> master
     display: ${ props => props.header === 'true' ? 'none' : 'grid' };
     margin: 0px;
   }

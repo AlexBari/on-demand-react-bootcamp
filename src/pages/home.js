@@ -6,18 +6,18 @@ import Carousel from '../components/Carousel/carousel';
 import { StyledBlueButton, StyledWrapper, StyledRoot } from './homePageComponents';
 import { StyledProductContainer } from '../components/Products/productsComponents';
 import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
+import { useFeaturedProducts } from '../utils/hooks/useFeaturedProducts';
 import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
 import Loading from '../common/loading.js';
-import { useProducts } from '../utils/hooks/useProducts';
 
 const HomePage = () => {
     const navigate = useNavigate();
-    const { data: banners, isLoading: isBannersLoading } = useFeaturedBanners(5);
-    const { data: categories, isLoading: isCategoriesLoading } = useFeaturedCategories(30);
-    const { data: products, isLoading: isProductsLoading } = useProducts(16, true);
+    const { data: banners, isLoading: isBannersLoading } = useFeaturedBanners();
+    const { data: categories, isLoading: isCategoriesLoading } = useFeaturedCategories();
+    const { data: products, isLoading: isProductsLoading } = useFeaturedProducts();
 
     const RedirectHandler = () => {
-        navigate('/product');
+        navigate('/productsPage');
     }
 
     return (
@@ -37,7 +37,7 @@ const HomePage = () => {
                 }
             </div>
             <StyledRoot>
-                <StyledProductContainer isLoading={isProductsLoading} hasData={products.results && products.results.length > 0} >
+                <StyledProductContainer isLoading={isProductsLoading}>
                     {
                         !isProductsLoading
                             ? <Products products={products.results} />
