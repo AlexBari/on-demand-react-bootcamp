@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { CapitalizeString } from '../../utils/utils';
+import { capitalizeString } from '../../utils/utils';
 import {
   CardsStyledWrapper,
   StyledContainerImage,
@@ -16,7 +16,7 @@ import {
 const ProductCard = ({ data, id }) => {
   const navigate = useNavigate();
 
-  const SendToCart = () => {
+  const handleSendToCart = () => {
     const prdToAdd = {
       product: data,
       qty: 1
@@ -27,10 +27,10 @@ const ProductCard = ({ data, id }) => {
   return (
     <CardsStyledWrapper>
       <StyledContainerImage>
-        <AddToCart onClick={SendToCart}>Add to cart</AddToCart>
+        <AddToCart onClick={handleSendToCart}>Add to cart</AddToCart>
         <StyledPhoto src={data.mainimage.url} alt={data.mainimage.alt} />
         <Title>{data.name}</Title>
-        <Category>Category: {CapitalizeString(data.category.slug)}</Category>
+        <Category>Category: {capitalizeString(data.category.slug)}</Category>
         <Price>${data.price} - Stock: {data.stock}</Price>
       </StyledContainerImage>
       <SeeDetails onClick={() => { navigate(`/product/${id}`) }}>See Details</SeeDetails>

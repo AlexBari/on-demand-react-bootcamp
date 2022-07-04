@@ -11,7 +11,6 @@ import {
 const Pagination = (props) => {
     const pageNumberLimit = 5;
     const [pages, setPages] = useState([]);
-    const [pageNumbers, setPageNumbers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [maxPageLimit, setMaxPageLimit] = useState(5);
     const [minPageLimit, setMinPageLimit] = useState(0);
@@ -44,30 +43,10 @@ const Pagination = (props) => {
         });
     }, [totalPages]);
 
-    useEffect(() => {
-        const onPageChange = (pageNumber) => {
-            setCurrentPage(pageNumber);
-            props.pageChange(pageNumber);
-        }
-
-        setPageNumbers(pages.map(page => {
-            if (page <= maxPageLimit && page > minPageLimit) {
-                return (
-                    <PageNumbersLi
-                        key={page}
-                        id={page}
-                        onClick={() => onPageChange(page)}
-                        className={currentPage === page ? 'active' : null}
-                        style={{ padding: '14px' }}
-                    >
-                        {page}
-                    </PageNumbersLi>
-                );
-            } else {
-                return null;
-            }
-        }));
-    }, [currentPage, maxPageLimit, minPageLimit, pages, props]);
+    const onPageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        props.pageChange(pageNumber);
+    }
 
     return (
         <MainWrapper>
@@ -85,7 +64,25 @@ const Pagination = (props) => {
                 {
                     minPageLimit >= 1 && <HellipLi onClick={onPrevClick}>&hellip;</HellipLi>
                 }
-                {pageNumbers}
+                {
+                    pages.map(page => {
+                        if (page <= maxPageLimit && page > minPageLimit) {
+                            return (
+                                <PageNumbersLi
+                                    key={page}
+                                    id={page}
+                                    onClick={() => onPageChange(page)}
+                                    className={currentPage === page ? 'active' : null}
+                                    style={{ padding: '14px' }}
+                                >
+                                    {page}
+                                </PageNumbersLi>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })
+                }
                 {
                     pages.length > maxPageLimit && <HellipLi onClick={onNextClick}>&hellip;</HellipLi>
                 }
