@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import {
     SearchWrapper,
     SearchForm,
@@ -8,10 +10,13 @@ import {
 } from './searchBarComponents'
 
 const SearchBar = ({header}) => {
-
+    const navigate = useNavigate();
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log('On search event', event.target.search.value)
+        navigate({
+            pathname: '/search',
+            search: `?q=${event.target.search.value}`,
+          });
     }
 
     return (
@@ -31,5 +36,9 @@ const SearchBar = ({header}) => {
         </SearchWrapper>
     )
 }
+
+SearchBar.propType = {
+    header: PropTypes.bool
+};
 
 export default SearchBar;

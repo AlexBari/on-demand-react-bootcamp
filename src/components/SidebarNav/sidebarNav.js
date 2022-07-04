@@ -4,10 +4,10 @@ import { SidebarBlock, HamburgerSpan, SideBarNavWrapper } from './sidebarNavComp
 import SearchBar from '../SearchBar/searchBar';
 
 const SidebarNav = () => {
-  const [isSidebar, initSidebar] = useState(false)
+  const [isSidebar, setSidebar] = useState(false)
   const node = useRef(null)
   const openSidebar = (isSidebar) => {
-    return initSidebar(!isSidebar)
+    return setSidebar(!isSidebar)
   }
 
   const trackSidebar = (e) => {
@@ -15,7 +15,7 @@ const SidebarNav = () => {
         || node.current.contains(e.target)) {
       return
     }
-    initSidebar(false)
+    setSidebar(false)
   }
 
   useEffect(() => {

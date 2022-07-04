@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
     MainWrapper,
     PageNumbersButton,
     PageNumbersLi,
-    PageNumbersUl
+    PageNumbersUl,
+    HellipLi
 } from './paginationComponents';
 
 const Pagination = (props) => {
     const pageNumberLimit = 5;
     const [pages, setPages] = useState([]);
-    const [pageNumbers, setPageNumbers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [maxPageLimit, setMaxPageLimit] = useState(5);
     const [minPageLimit, setMinPageLimit] = useState(0);
     const totalPages = props.totalPages;
-
-    const onPageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    }
 
     const onPrevClick = () => {
         if ((currentPage - 1) % pageNumberLimit === 0) {
@@ -25,6 +22,7 @@ const Pagination = (props) => {
             setMinPageLimit(minPageLimit - pageNumberLimit);
         }
         setCurrentPage(prev => prev - 1);
+        props.pageChange(currentPage - 1);
     }
 
     const onNextClick = () => {
@@ -33,6 +31,7 @@ const Pagination = (props) => {
             setMinPageLimit(minPageLimit + pageNumberLimit);
         }
         setCurrentPage(prev => prev + 1);
+        props.pageChange(currentPage + 1);
     }
 
     useEffect(() => {
@@ -44,25 +43,10 @@ const Pagination = (props) => {
         });
     }, [totalPages]);
 
-    useEffect(() => {
-        setPageNumbers(pages.map(page => {
-            if (page <= maxPageLimit && page > minPageLimit) {
-                return (
-                    <PageNumbersLi
-                        key={page}
-                        id={page}
-                        onClick={onPageChange}
-                        className={currentPage === page ? 'active' : null}
-                        style={{ padding: '14px' }}
-                    >
-                        {page}
-                    </PageNumbersLi>
-                );
-            } else {
-                return null;
-            }
-        }));
-    }, [currentPage, maxPageLimit, minPageLimit, pages]);
+    const onPageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        props.pageChange(pageNumber);
+    }
 
     return (
         <MainWrapper>
@@ -78,11 +62,29 @@ const Pagination = (props) => {
                     </PageNumbersLi>
                 }
                 {
-                    minPageLimit >= 1 && <li onClick={onPrevClick}>&hellip;</li>
+                    minPageLimit >= 1 && <HellipLi onClick={onPrevClick}>&hellip;</HellipLi>
                 }
-                {pageNumbers}
                 {
-                    pages.length > maxPageLimit && <li onClick={onNextClick}>&hellip;</li>
+                    pages.map(page => {
+                        if (page <= maxPageLimit && page > minPageLimit) {
+                            return (
+                                <PageNumbersLi
+                                    key={page}
+                                    id={page}
+                                    onClick={() => onPageChange(page)}
+                                    className={currentPage === page ? 'active' : null}
+                                    style={{ padding: '14px' }}
+                                >
+                                    {page}
+                                </PageNumbersLi>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })
+                }
+                {
+                    pages.length > maxPageLimit && <HellipLi onClick={onNextClick}>&hellip;</HellipLi>
                 }
                 {totalPages > 1 &&
                     <PageNumbersLi>
@@ -98,4 +100,10 @@ const Pagination = (props) => {
         </MainWrapper>
     )
 }
+
+Pagination.propTypes = {
+    pageChange: PropTypes.func,
+    totalPages: PropTypes.number
+};
+
 export default Pagination;

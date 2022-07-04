@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SideBarNavWrapper = styled.div`
 display: none;
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 980px) {
   display: flex;
 }`;
 
@@ -26,7 +26,7 @@ export const SidebarBlock = styled.div`
     & a:hover {
         color: red;
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 980px) {
          height: 100%;
     }
 `;

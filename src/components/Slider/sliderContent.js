@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const SliderContentDiv = styled.div`
   transform: translateX(-${props => props.translate}px);
@@ -7,6 +8,7 @@ const SliderContentDiv = styled.div`
   height: 100%;
   width: ${props => props.width}px;
   display: flex;
+  margin: 0 -50px;
 `;
 
 const SliderContet = (props) => {
@@ -15,6 +17,12 @@ const SliderContet = (props) => {
       {props.children}
     </SliderContentDiv>
   )
+};
+
+SliderContet.propTypes = {
+  translate: PropTypes.number,
+  transition: PropTypes.number,
+  width: PropTypes.number
 };
 
 export default SliderContet;
