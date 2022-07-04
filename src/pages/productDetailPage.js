@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useProducts } from '../utils/hooks/useProducts';
 import Loading from '../common/loading';
 import Slider from '../components/Slider/slider';
-import { CapitalizeString } from '../utils/utils';
+import { capitalizeString } from '../utils/utils';
 import { AddToCart, Category, Price, Title } from '../components/Products/productCardComponents';
 import {
     InfoDivWrapper,
@@ -72,7 +72,7 @@ const ProductDetailPage = () => {
                                 <Title>{product.data.name} ( SKU: {product.data.sku} )</Title>
                                 <Price>${product.data.price} - Stock: {product.data.stock}</Price>
                                 <span></span>
-                                <Category>Category: {CapitalizeString(product.data.category.slug)}</Category>
+                                <Category>Category: {capitalizeString(product.data.category.slug)}</Category>
                                 <span style={{fontWeight: 'bold'}}>Tags:</span>
                                 <ul>
                                     {

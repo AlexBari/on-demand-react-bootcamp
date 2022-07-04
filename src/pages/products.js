@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Products from '../components/Products/products';
 import ProductsSideBar from '../components/Products/productsSideBar';
-import { CapitalizeString } from '../utils/utils';
+import { capitalizeString } from '../utils/utils';
 import Loading from '../common/loading';
 import {
     StyledProductContainer,
@@ -39,7 +39,7 @@ const ProductsPage = () => {
     };
 
     useEffect(() => {
-        if (ftCategories.results) setFilteredCategories(ftCategories.results.map(ctg => CapitalizeString(ctg.data.name)))
+        if (ftCategories.results) setFilteredCategories(ftCategories.results.map(ctg => capitalizeString(ctg.data.name)))
         if (query.length > 0 && data.results && data.results.length > 0) {
             let filtered = query.reduce((previousValue, currentValue) => {
                 let arr = data.results.filter(prd => prd.data.category.slug.toLowerCase() === currentValue.toLowerCase())
