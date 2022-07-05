@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import NavMenu from '../../common/navMenu';
+import NavMenu from '../../common/header/navMenu';
 import { SidebarBlock, HamburgerSpan, SideBarNavWrapper } from './sidebarNavComponents';
 import SearchBar from '../SearchBar/searchBar';
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProducts } from '../utils/hooks/useProducts';
-import Loading from '../common/loading';
+import Loading from '../common/loading/loading';
 import Slider from '../components/Slider/slider';
 import { capitalizeString } from '../utils/utils';
 import { AddToCart, Category, Price, Title } from '../components/Products/productCardComponents';
