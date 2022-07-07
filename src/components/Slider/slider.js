@@ -1,18 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { SliderCSS } from './styled';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import SliderContent from './sliderContent';
 import Slide from './slide';
 import Arrow from './arrow';
 import Dots from '../Carousel/dot';
-
-const SliderCSS = styled.div`
-  position: relative;
-  height: 60vh;
-  width: ${ props => props.sliderWidth ? props.sliderWidth : '95vw'};
-  margin: 20px auto;
-  overflow: hidden;
-`;
 
 const Slider = ({ slides = [], autoPlay, isContain, sliderWidth }) => {
     const getWidth = () => window.innerWidth;
@@ -101,7 +93,7 @@ Slider.propTypes = {
     slides: PropTypes.array,
     autoPlay: PropTypes.bool,
     isContain: PropTypes.bool,
-    sliderWidth: PropTypes.number
+    sliderWidth: PropTypes.string
 }
 
 export default Slider;

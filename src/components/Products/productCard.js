@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import AddToCart from '../ShoppingCart/addToCart';
 import { capitalizeString } from '../../utils/utils';
 import {
   CardsStyledWrapper,
@@ -9,25 +10,21 @@ import {
   Title,
   Category,
   Price,
-  SeeDetails,
-  AddToCart
+  SeeDetails
 } from './productCardComponents'
+import { AppContext } from '../../App';
 
 const ProductCard = ({ data, id }) => {
   const navigate = useNavigate();
-
+  const { dispatch } = useContext(AppContext);
   const handleSendToCart = () => {
-    const prdToAdd = {
-      product: data,
-      qty: 1
-    }
-    console.log(prdToAdd)
+    dispatch({ type: 'add', product: {id, ...data}, quantity: 1 });
   };
 
   return (
     <CardsStyledWrapper>
       <StyledContainerImage>
-        <AddToCart onClick={handleSendToCart}>Add to cart</AddToCart>
+        <AddToCart onClick={(handleSendToCart)} product={data}>Add to cart</AddToCart>
         <StyledPhoto src={data.mainimage.url} alt={data.mainimage.alt} />
         <Title>{data.name}</Title>
         <Category>Category: {capitalizeString(data.category.slug)}</Category>

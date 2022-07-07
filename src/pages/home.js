@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Slider from '../components/Slider/slider';
 import Products from '../components/Products/products';
 import Carousel from '../components/Carousel/carousel';
-import { StyledBlueButton, StyledWrapper, StyledRoot } from './homePageComponents';
+import { StyledBlueButton, StyledWrapper, StyledRoot } from './styled';
 import { StyledProductContainer } from '../components/Products/productsComponents';
 import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
 import { useProducts } from '../utils/hooks/useProducts';
@@ -17,7 +17,7 @@ const HomePage = () => {
     const { data: products, isLoading: isProductsLoading } = useProducts(16, true, 1);
 
     const RedirectHandler = () => {
-        navigate('/productsPage');
+        navigate('/products');
     }
 
     return (

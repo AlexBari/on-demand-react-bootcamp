@@ -1,7 +1,7 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../../App';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/searchBar';
-import ShoppingCart from '../../components/ShoppinCart/shoppingCart';
 import SidebarNav from '../../components/SidebarNav/sidebarNav';
 import NavMenu from './navMenu';
 import {
@@ -10,15 +10,24 @@ import {
     NavBar,
     NavStyledWrapper,
     NavSearch,
-    NavShoppingCart
-
+    NavShoppingCart,
+    ShoppingCartWrapper,
+    NumItmDiv
 } from './headerComponents'
 
 const Header = () => {
+    const {state} = useContext(AppContext);
+    const [ numItems, setNumItems] = useState(0);
     const navigate = useNavigate();
+    const location = useLocation();
     const RedirectHandler = () => {
         navigate('/');
     }
+
+    useEffect(() => {
+        setNumItems(state.totalOfItems);
+    },[state]);
+
     return (
         <NavBar>
             <NavStyledWrapper>
@@ -29,11 +38,12 @@ const Header = () => {
             <NavMenu header={'true'} />
             <NavStyledWrapper>
                 <NavSearch>
-                    <SearchBar header={'true'}/>
+                    <SearchBar header={'true'} />
                 </NavSearch>
-                <NavShoppingCart>
-                    <ShoppingCart />
-                </NavShoppingCart>
+                <ShoppingCartWrapper onClick={() => navigate('/cart')} className={location.pathname === '/cart' ? 'active' : ''} >
+                    <NavShoppingCart />
+                   {numItems > 0 &&  <NumItmDiv>{numItems}</NumItmDiv>}
+                </ShoppingCartWrapper>
             </NavStyledWrapper>
         </NavBar>
     )

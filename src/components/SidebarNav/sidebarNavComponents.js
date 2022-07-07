@@ -38,3 +38,12 @@ export const HamburgerSpan = styled.span`
     margin-right: 1rem;
     margin-left: 1rem;
 `;
+
+export const OverlayDiv = styled.div`
+    z-index: 199;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    position: fixed;
+    overflow: hidden;
+`;
