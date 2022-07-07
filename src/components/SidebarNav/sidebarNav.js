@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import NavMenu from '../../common/navMenu';
-import { SidebarBlock, HamburgerSpan, SideBarNavWrapper } from './sidebarNavComponents';
+import NavMenu from '../../common/header/navMenu';
+import { SidebarBlock, HamburgerSpan, SideBarNavWrapper, OverlayDiv } from './sidebarNavComponents';
 import SearchBar from '../SearchBar/searchBar';
 
 const SidebarNav = () => {
@@ -59,7 +59,9 @@ const SidebarNav = () => {
             </svg>
           </HamburgerSpan>
         </nav>
-
+        <OverlayDiv 
+          ref={node}
+          style={{ width: isSidebar ? '100%' : '0%' }}/>
         <SidebarBlock
           id='sidebar-block'
           ref={node}

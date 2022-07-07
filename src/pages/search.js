@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Products from '../components/Products/products';
-import Loading from '../common/loading';
+import Loading from '../common/loading/loading';
 import { useProducts } from '../utils/hooks/useProducts';
-import Pagination from '../common/pagination';
+import Pagination from '../common/pagination/pagination';
 import { StyledProductContainer, StyledWrapper } from '../components/Products/productsComponents';
 
 const SearchPage = () => {

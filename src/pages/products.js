@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Products from '../components/Products/products';
 import ProductsSideBar from '../components/Products/productsSideBar';
 import { capitalizeString } from '../utils/utils';
-import Loading from '../common/loading';
+import Loading from '../common/loading/loading';
 import {
     StyledProductContainer,
     StyledWrapper,
@@ -12,7 +12,7 @@ import {
 } from '../components/Products/productsComponents';
 import { useProducts } from '../utils/hooks/useProducts';
 import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
-import Pagination from '../common/pagination';
+import Pagination from '../common/pagination/pagination';
 
 const ProductsPage = () => {
     const [searchParams] = useSearchParams();

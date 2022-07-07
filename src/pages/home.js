@@ -3,21 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import Slider from '../components/Slider/slider';
 import Products from '../components/Products/products';
 import Carousel from '../components/Carousel/carousel';
-import { StyledBlueButton, StyledWrapper, StyledRoot } from './homePageComponents';
+import { StyledBlueButton, StyledWrapper, StyledRoot } from './styled';
 import { StyledProductContainer } from '../components/Products/productsComponents';
 import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
-import { useFeaturedProducts } from '../utils/hooks/useFeaturedProducts';
+import { useProducts } from '../utils/hooks/useProducts';
 import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
-import Loading from '../common/loading.js';
+import Loading from '../common/loading/loading';
 
 const HomePage = () => {
     const navigate = useNavigate();
-    const { data: banners, isLoading: isBannersLoading } = useFeaturedBanners();
-    const { data: categories, isLoading: isCategoriesLoading } = useFeaturedCategories();
-    const { data: products, isLoading: isProductsLoading } = useFeaturedProducts();
+    const { data: banners, isLoading: isBannersLoading } = useFeaturedBanners(5);
+    const { data: categories, isLoading: isCategoriesLoading } = useFeaturedCategories(30);
+    const { data: products, isLoading: isProductsLoading } = useProducts(16, true, 1);
 
     const RedirectHandler = () => {
-        navigate('/productsPage');
+        navigate('/products');
     }
 
     return (
@@ -37,7 +37,7 @@ const HomePage = () => {
                 }
             </div>
             <StyledRoot>
-                <StyledProductContainer isLoading={isProductsLoading}>
+                <StyledProductContainer isLoading={isProductsLoading} hasData={products.results && products.results.length > 0}>
                     {
                         !isProductsLoading
                             ? <Products products={products.results} />

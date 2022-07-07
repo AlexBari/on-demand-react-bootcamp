@@ -28,13 +28,9 @@ export const NavBar = styled.nav`
   padding: 0 calc((100vw - 96%) / 2);
   z-index: 100;
   color: white;
-<<<<<<< HEAD
   @media screen and (max-width: 980px) {
-=======
-  @media screen and (max-width: 768px) {
->>>>>>> master
       position: fixed;
-      width: 100%
+      width: 96%;
   }
 `;
 
@@ -42,16 +38,11 @@ export const NavShoppingCart = styled(AiOutlineShoppingCart)`
   display: flex;
   font-size: 1.8rem;
   cursor: pointer;
-  padding: 3px 15px;
+  padding: 3px 0px 3px 6px;
   align-items: center;
   transition: 0.4s;
   background: none;
   border-radius: 1rem;
-  &:hover {
-    color: black;
-    border-radius: 1rem;
-    background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
-  }
 `;
 
 export const NavMenuWrapper = styled.div`
@@ -59,11 +50,7 @@ export const NavMenuWrapper = styled.div`
   align-items: center;
   margin-right: -15%;
   white-space: nowrap;
-<<<<<<< HEAD
   @media screen and (max-width: 980px) {
-=======
-  @media screen and (max-width: 768px) {
->>>>>>> master
     display: ${ props => props.header === 'true' ? 'none' : 'grid' };
     margin: 0px;
   }
@@ -92,7 +79,6 @@ export const NavLink = styled(Link)`
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
-
   }
   &:hover { 
     color: white;
@@ -115,7 +101,7 @@ export const NavLink = styled(Link)`
       font-weight: bolder;
       font-size: 20px;
       justify-content: center;
-      border 3px solid #79CED1;
+      border: 3px solid #79CED1;
       border-radius: 1rem;
     }
   }
@@ -133,4 +119,34 @@ export const NavSearch = styled.nav`
 export const NavStyledWrapper = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const NumItmDiv = styled.div`
+  padding: 0 15px;
+  font-weight: bolder;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 0 10px;
+`;
+
+export const ShoppingCartWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  &:hover {
+    color: black;
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+    ${NumItmDiv} {
+      border: 1px solid black;
+    }
+  }
+  &.active {
+    color: black;
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+    ${NumItmDiv} {
+      border: 1px solid black;
+    }
+  }
 `;
