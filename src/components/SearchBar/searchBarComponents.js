@@ -26,21 +26,21 @@ export const SearchButton = styled.button`
         background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
     }
     @media screen and (max-width: 980px) {
-      display: ${ props => props.header === 'true'? 'none' : 'flex'};
+      display: ${(props) => (props.header === 'true' ? 'none' : 'flex')};
       color: black;
       border: 1px solid black;
     }
 `;
 
 export const SearchWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height: 50px;
+    display: flex;
+    align-items: center;
+    height: 50px;
 `;
 
 export const SearchForm = styled.form`
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 `;
 
 export const SearchInput = styled.input`
@@ -49,8 +49,8 @@ export const SearchInput = styled.input`
     border-radius: 1rem;
     padding: 2px 5px;
     @media screen and (max-width: 980px) {
-      display: ${ props => props.header === 'true'? 'none' : 'flex'};
-      margin: 10px 5px;
-      width: 10rem;
+        display: ${(props) => (props.header === 'true' ? 'none' : 'flex')};
+        margin: 10px 5px;
+        width: 10rem;
     }
 `;

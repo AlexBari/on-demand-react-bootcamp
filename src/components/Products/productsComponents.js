@@ -16,8 +16,11 @@ export const StyledWrapper = styled.div`
 
 export const StyledProductContainer = styled.div`
     display: grid;
-    grid-template-columns: ${props => props.isLoading || !props.hasData ? 'auto' : 'repeat(auto-fill, 250px)'}; 
-    grid-auto-rows: auto; 
+    grid-template-columns: ${(props) =>
+        props.isLoading || !props.hasData
+            ? 'auto'
+            : 'repeat(auto-fill, 250px)'};
+    grid-auto-rows: auto;
     grid-gap: 1rem;
     place-items: center;
     justify-content: center;
@@ -31,7 +34,7 @@ export const StyledCategoryRow = styled.div`
     height: 50px;
     padding: 5px;
     cursor: pointer;
-    border: 1px solid #79CED1;
+    border: 1px solid #79ced1;
     border-radius: 5px;
     margin-bottom: 20px;
     word-break: break-all;
@@ -42,7 +45,11 @@ export const StyledCategoryRow = styled.div`
     }
     &.active {
         color: black;
-        background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+        background: linear-gradient(
+            145deg,
+            rgba(121, 206, 209, 1) 57%,
+            rgba(255, 255, 255, 1) 98%
+        );
     }
 `;
 
@@ -54,13 +61,17 @@ export const ProductDetaildWrapper = styled.div`
 `;
 
 export const ProductDetailWrapper = styled.div`
-  padding: 1rem;
-  position: relative;
-  background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
-  height: auto;
-  display: block;
-  align-self: center;
-  border-radius: 5px;
+    padding: 1rem;
+    position: relative;
+    background: linear-gradient(
+        145deg,
+        rgba(121, 206, 209, 1) 57%,
+        rgba(255, 255, 255, 1) 98%
+    );
+    height: auto;
+    display: block;
+    align-self: center;
+    border-radius: 5px;
 `;
 
 export const InnerContainerWrapper = styled.div`
@@ -74,7 +85,13 @@ export const InnerContainerWrapper = styled.div`
 export const InfoDivWrapper = styled.div`
     border-top-width: 4px;
     border-top-style: solid;
-    border-image: linear-gradient(80deg, rgba(255,255,255,1) 5%, rgba(121,206,209,1) 50%, rgba(242,250,250,0.1) 95%) 1;
+    border-image: linear-gradient(
+            80deg,
+            rgba(255, 255, 255, 1) 5%,
+            rgba(121, 206, 209, 1) 50%,
+            rgba(242, 250, 250, 0.1) 95%
+        )
+        1;
     padding: 30px;
 `;
 
@@ -117,7 +134,13 @@ export const QtyDiv = styled.div`
     border-radius: 20px;
     border-width: 4px;
     border-style: solid;
-    border-image: linear-gradient(80deg, rgba(255,255,255,1) 5%, rgba(121,206,209,1) 50%, rgba(242,250,250,0.1) 95%) 1;
+    border-image: linear-gradient(
+            80deg,
+            rgba(255, 255, 255, 1) 5%,
+            rgba(121, 206, 209, 1) 50%,
+            rgba(242, 250, 250, 0.1) 95%
+        )
+        1;
 `;
 
 export const QtyButton = styled.button`
@@ -126,13 +149,17 @@ export const QtyButton = styled.button`
     height: 20px;
     align-items: center;
     margin-bottom: 10px;
-    border: 3px solid #79CED1;
+    border: 3px solid #79ced1;
     background: white;
     padding: 0px 20px;
     border-radius: 1rem;
     height: 35px;
     &:hover {
-        background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+        background: linear-gradient(
+            145deg,
+            rgba(121, 206, 209, 1) 57%,
+            rgba(255, 255, 255, 1) 98%
+        );
     }
 `;
 
@@ -143,7 +170,7 @@ export const SideBarCategoryRow = styled.div`
     height: 50px;
     padding: 5px;
     cursor: pointer;
-    border: 1px solid #79CED1;
+    border: 1px solid #79ced1;
     border-radius: 5px;
     margin: 1px 0px;
     word-break: break-all;
@@ -153,6 +180,10 @@ export const SideBarCategoryRow = styled.div`
     }
     &.active {
         color: black;
-        background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+        background: linear-gradient(
+            145deg,
+            rgba(121, 206, 209, 1) 57%,
+            rgba(255, 255, 255, 1) 98%
+        );
     }
 `;

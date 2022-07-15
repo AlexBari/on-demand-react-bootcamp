@@ -1,12 +1,13 @@
+/* eslint-disable consistent-return */
 import React, { useState, useRef, useEffect } from 'react';
-import { SliderCSS } from './styled';
 import PropTypes from 'prop-types';
+import SliderCSS from './styled';
 import SliderContent from './sliderContent';
 import Slide from './slide';
 import Arrow from './arrow';
 import Dots from '../Carousel/dot';
 
-const Slider = ({ slides = [], autoPlay, isContain, sliderWidth }) => {
+function Slider({ slides = [], autoPlay, isContain, sliderWidth }) {
     const getWidth = () => window.innerWidth;
     const [sliderState, setSliderState] = useState({
         activeIndex: 0,
@@ -16,40 +17,21 @@ const Slider = ({ slides = [], autoPlay, isContain, sliderWidth }) => {
     const { activeIndex, translate, transition } = sliderState;
     const resizeRef = useRef();
 
-    useEffect(() => {
-        resizeRef.current = handleResize;
-    });
-
-    useEffect(() => {
-        const resize = () => {
-            resizeRef.current()
-        }
-
-        const onResize = window.addEventListener('resize', resize);
-        return () => {
-            window.removeEventListener('resize', onResize);
-        }
-    }, [autoPlay]);
-
-    useEffect(() => {
-        if (transition === 0) setSliderState((prev) => ({ ...prev, transition: 0.45 }))
-    }, [transition]);
-
     const nextSlide = () => {
         if (activeIndex === slides.length - 1) {
             return setSliderState((prev) => ({
                 ...prev,
                 translate: 0,
                 activeIndex: 0
-            }))
+            }));
         }
 
         setSliderState((prev) => ({
             ...prev,
             activeIndex: activeIndex + 1,
             translate: (activeIndex + 1) * getWidth()
-        }))
-    }
+        }));
+    };
 
     const prevSlide = () => {
         if (activeIndex === 0) {
@@ -57,7 +39,7 @@ const Slider = ({ slides = [], autoPlay, isContain, sliderWidth }) => {
                 ...prev,
                 translate: (slides.length - 1) * getWidth(),
                 activeIndex: slides.length - 1
-            }))
+            }));
         }
 
         setSliderState((prev) => ({
@@ -65,35 +47,64 @@ const Slider = ({ slides = [], autoPlay, isContain, sliderWidth }) => {
             activeIndex: activeIndex - 1,
             translate: (activeIndex - 1) * getWidth()
         }));
-    }
+    };
 
     const handleResize = () => {
-        setSliderState((prev) => ({ ...prev, translate: getWidth(), transition: 0 }))
-    }
+        setSliderState((prev) => ({
+            ...prev,
+            translate: getWidth(),
+            transition: 0
+        }));
+    };
+
+    useEffect(() => {
+        resizeRef.current = handleResize;
+    });
+
+    useEffect(() => {
+        const resize = () => {
+            resizeRef.current();
+        };
+
+        const onResize = window.addEventListener('resize', resize);
+        return () => {
+            window.removeEventListener('resize', onResize);
+        };
+    }, [autoPlay]);
+
+    useEffect(() => {
+        if (transition === 0)
+            setSliderState((prev) => ({ ...prev, transition: 0.45 }));
+    }, [transition]);
 
     return (
-        <SliderCSS sliderWidth={sliderWidth}>
+        <SliderCSS data-testid="sliders" sliderWidth={sliderWidth}>
             <SliderContent
                 translate={translate}
                 transition={transition}
-                width={(getWidth() * slides.length)}
+                width={getWidth() * slides.length}
             >
-                {
-                    slides.map((slide, i) => <Slide key={`${slide.id}-slide-${i}`} data={slide.data} isContain={isContain}/>)
-                }
+                {slides.map((slide) => (
+                    <Slide
+                        key={`${slide.id}-slide`}
+                        data={slide.data}
+                        isContain={isContain}
+                    />
+                ))}
             </SliderContent>
             <Dots slides={slides} activeIndex={activeIndex} />
             <Arrow direction="left" handleClick={prevSlide} />
             <Arrow direction="right" handleClick={nextSlide} />
         </SliderCSS>
-    )
+    );
 }
 
 Slider.propTypes = {
+    // eslint-disable-next-line react/forbid-prop-types
     slides: PropTypes.array,
     autoPlay: PropTypes.bool,
     isContain: PropTypes.bool,
     sliderWidth: PropTypes.string
-}
+};
 
 export default Slider;

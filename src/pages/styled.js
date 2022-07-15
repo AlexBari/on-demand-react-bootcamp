@@ -6,13 +6,17 @@ export const StyledRoot = styled.div`
 `;
 
 export const StyledBlueButton = styled.button`
-    background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+    background: linear-gradient(
+        145deg,
+        rgba(121, 206, 209, 1) 57%,
+        rgba(255, 255, 255, 1) 98%
+    );
     border-radius: 1rem;
     height: 3rem;
     width: 25rem;
-    border: 1px solid #79CED1;
+    border: 1px solid #79ced1;
     cursor: pointer;
-    margin-bottom: 70px
+    margin-bottom: 70px;
 `;
 
 export const StyledWrapper = styled.div`
@@ -125,14 +129,14 @@ export const FormTextarea = styled.textarea`
     min-width: 254px;
     min-height: 21.5px;
     margin: 5px 15px;
-    border-color: rgba(121,206,209,1);
+    border-color: rgba(121, 206, 209, 1);
     border-radius: 5px;
 `;
 
 export const FormInput = styled.input`
     margin: 5px 15px;
     min-width: 254px;
-    border: 1px solid rgba(121,206,209,1);
+    border: 1px solid rgba(121, 206, 209, 1);
     border-radius: 5px;
     &:invalid {
         background-color: ivory;
@@ -145,12 +149,16 @@ export const StandardButton = styled.button`
     border-radius: 1rem;
     height: 3rem;
     width: 100%;
-    border: 1px solid #79CED1;
+    border: 1px solid #79ced1;
     cursor: pointer;
     background: #79ced173;
     font-weight: 700;
     &:hover {
-        background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+        background: linear-gradient(
+            145deg,
+            rgba(121, 206, 209, 1) 57%,
+            rgba(255, 255, 255, 1) 98%
+        );
     }
 `;
 
@@ -179,7 +187,13 @@ export const CheckoutProduct = styled.div`
     border-top-style: solid;
     border-bottom-width: 4px;
     border-bottom-style: solid;
-    border-image: linear-gradient(80deg, rgba(255,255,255,1) 5%, rgba(121,206,209,1) 50%, rgba(242,250,250,0.1) 95%) 1;
+    border-image: linear-gradient(
+            80deg,
+            rgba(255, 255, 255, 1) 5%,
+            rgba(121, 206, 209, 1) 50%,
+            rgba(242, 250, 250, 0.1) 95%
+        )
+        1;
     @media screen and (max-width: 980px) {
         display: flex;
         flex-direction: column;

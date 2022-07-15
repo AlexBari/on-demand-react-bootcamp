@@ -14,10 +14,10 @@ export const MainFooterDiv = styled.div`
     justify-content: center;
 `;
 
-const Footer = () => {
+function Footer() {
     return (
         <MainFooterDiv>
-                 Ecommerce created during Wizeline’s Academy React Bootcamp
+            Ecommerce created during Wizeline’s Academy React Bootcamp
         </MainFooterDiv>
     );
 }

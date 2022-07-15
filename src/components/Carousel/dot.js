@@ -7,7 +7,7 @@ const StyledDotSpan = styled.span`
     margin-right: 5px;
     cursor: pointer;
     border-radius: 50%;
-    background: ${props => props.active ? 'black' : '#dedede'};
+    background: ${(props) => (props.active ? 'black' : '#dedede')};
 `;
 
 const StyledDotsSpan = styled.span`
@@ -19,25 +19,37 @@ const StyledDotsSpan = styled.span`
     justify-content: center;
 `;
 
-const Dot = ({ active }) => (
-    <StyledDotSpan active={active}/>
-)
+function Dot({ active }) {
+    return <StyledDotSpan active={active} />;
+}
 
-const Dots = ({ slides, activeIndex }) => (
-    <StyledDotsSpan>
-        {slides.map((slide, i) => (
-            <Dot key={`${slide.id}-dot-${i}`} active={activeIndex === i} />
-        ))}
-    </StyledDotsSpan>
-)
+function Dots({ slides, activeIndex }) {
+    return (
+        <StyledDotsSpan>
+            {slides.map((slide, i) => (
+                <Dot key={`${slide.id}-dot`} active={activeIndex === i} />
+            ))}
+        </StyledDotsSpan>
+    );
+}
 
-Dot.propType = {
+Dot.propTypes = {
     active: PropTypes.bool
 };
 
-Dots.propType = {
+Dot.defaultProps = {
+    active: false
+};
+
+Dots.propTypes = {
+    // eslint-disable-next-line react/forbid-prop-types
     slides: PropTypes.array,
     activeIndex: PropTypes.number
 };
 
-export default Dots
+Dots.defaultProps = {
+    slides: [],
+    activeIndex: 0
+};
+
+export default Dots;

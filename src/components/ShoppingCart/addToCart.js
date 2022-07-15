@@ -1,21 +1,28 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../../App';
-import { AddToCartButton } from '../Products/productCardComponents';
 import PropTypes from 'prop-types';
+import { AddToCartButton } from '../Products/productCardComponents';
+import AppContext from '../../utils/appContext';
 
-const AddToCart = ({ product, qty = 1 }) => {
+function AddToCart({ product, qty = 1 }) {
     const { dispatch } = useContext(AppContext);
     const SendToCart = () => {
-        dispatch({ type: 'add', product: product, quantity: qty });
+        dispatch({ type: 'add', product, quantity: qty });
     };
     return (
-        <AddToCartButton width={'100%'} onClick={SendToCart} disabled={qty === 0}>Add to cart</AddToCartButton>
+        <AddToCartButton width="100%" onClick={SendToCart} disabled={qty === 0}>
+            Add to cart
+        </AddToCartButton>
     );
+}
+
+AddToCart.propTypes = {
+    product: PropTypes.shape({}),
+    qty: PropTypes.number
 };
 
-AddToCart.propType = {
-    product: PropTypes.object,
-    qty: PropTypes.number
+AddToCart.defaultProps = {
+    product: {},
+    qty: 0
 };
 
 export default AddToCart;

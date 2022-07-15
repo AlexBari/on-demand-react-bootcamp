@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const SideBarNavWrapper = styled.div`
-display: none;
-@media screen and (max-width: 980px) {
-  display: flex;
-}`;
+    display: none;
+    @media screen and (max-width: 980px) {
+        display: flex;
+    }
+`;
 
 export const SidebarBlock = styled.div`
     position: fixed;
@@ -12,8 +13,8 @@ export const SidebarBlock = styled.div`
     top: 50px;
     width: 255px;
     background: white;
-    transition: all .35s ease-out;
-    left: ${props => props.isSideBar ? '0' : '-260px'};
+    transition: all 0.35s ease-out;
+    left: ${(props) => (props.isSideBar ? '0' : '-260px')};
     z-index: 200;
     & a {
         display: flex;
@@ -27,7 +28,7 @@ export const SidebarBlock = styled.div`
         color: red;
     }
     @media screen and (max-width: 980px) {
-         height: 100%;
+        height: 100%;
     }
 `;
 
@@ -43,7 +44,7 @@ export const OverlayDiv = styled.div`
     z-index: 199;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     position: fixed;
     overflow: hidden;
 `;
