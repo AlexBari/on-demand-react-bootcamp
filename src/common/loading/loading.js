@@ -26,12 +26,12 @@ const LoadingSpinner = styled.div`
     animation: ${Spinner} 1.5s linear infinite;
 `;
 
-const Loading = () => {
+function Loading() {
     return (
         <SpinnerContainer>
             <LoadingSpinner />
         </SpinnerContainer>
     );
-};
+}
 
 export default Loading;

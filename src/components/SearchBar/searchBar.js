@@ -7,17 +7,17 @@ import {
     SearchButton,
     SearchInput,
     MagnifyingGlass
-} from './searchBarComponents'
+} from './searchBarComponents';
 
-const SearchBar = ({header}) => {
+function SearchBar({ header }) {
     const navigate = useNavigate();
     const submitHandler = (event) => {
         event.preventDefault();
         navigate({
             pathname: '/search',
-            search: `?q=${event.target.search.value}`,
-          });
-    }
+            search: `?q=${event.target.search.value}`
+        });
+    };
 
     return (
         <SearchWrapper>
@@ -27,18 +27,22 @@ const SearchBar = ({header}) => {
                     id="header-search"
                     placeholder="Search"
                     name="search"
-                    header = {header}
+                    header={header}
                 />
                 <SearchButton header={header} type="submit">
                     <MagnifyingGlass />
                 </SearchButton>
             </SearchForm>
         </SearchWrapper>
-    )
+    );
 }
 
-SearchBar.propType = {
-    header: PropTypes.bool
+SearchBar.propTypes = {
+    header: PropTypes.string
+};
+
+SearchBar.defaultProps = {
+    header: 'true'
 };
 
 export default SearchBar;

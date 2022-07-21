@@ -1,29 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import { StyledH1, StyledWrapperNF } from './styled';
 
-const StyledWrapperNF = styled.div`
-    position: relative;
-    width: 100%;
-    height: 80%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-`;
-
-const StyledH1 = styled.h1`
-    font-weight: bolder;
-    font-size: 6rem;
-`;
-
-export const NotFound = () => {
+function NotFound() {
     return (
         <StyledWrapperNF>
             <div>
-                <img src='./BlueFox.png' alt='BlueFox'></img>
+                <img src="./BlueFox.png" alt="BlueFox" />
             </div>
             <div>
                 <StyledH1>Error 404 - Page Not Found</StyledH1>
             </div>
         </StyledWrapperNF>
-    )
-};
+    );
+}
+
+export default NotFound;
