@@ -25,7 +25,7 @@ import AddToCart from '../components/ShoppingCart/addToCart';
 
 function ProductDetailPage() {
     const { productId } = useParams();
-    const { data = [], isLoading } = useProducts(1, false, 1, productId);
+    const { data = {}, isLoading } = useProducts(1, false, 1, productId);
     const [product, setProduct] = useState();
     const [qty, setQty] = useState(0);
     const [images, setImages] = useState([]);
@@ -81,7 +81,7 @@ function ProductDetailPage() {
                                     <li key={`tag-${tg}`}>{tg}</li>
                                 ))}
                             </ul>
-                            <ProductDescription>
+                            <ProductDescription data-testid="productDescription">
                                 {product.data.description[0].text}
                             </ProductDescription>
                             <span style={{ fontWeight: 'bold' }}>Specs:</span>
@@ -97,13 +97,17 @@ function ProductDetailPage() {
                                     <QtyButton
                                         onClick={decrementCount}
                                         disabled={qty === 0}
+                                        data-testid="decrementButton"
                                     >
                                         -
                                     </QtyButton>
-                                    <QtyDiv>{qty}</QtyDiv>
+                                    <QtyDiv data-testid="qtyPlaced">
+                                        {qty}
+                                    </QtyDiv>
                                     <QtyButton
                                         onClick={incrementCount}
                                         disabled={qty === product.data.stock}
+                                        data-testid="incrementButton"
                                     >
                                         +
                                     </QtyButton>

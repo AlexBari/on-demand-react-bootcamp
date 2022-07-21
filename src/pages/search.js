@@ -15,7 +15,7 @@ function SearchPage() {
     const [totalPages, setTotalPages] = useState();
     const [searchResults, setSearchResults] = useState();
     const [page, setPage] = useState();
-    const { data = [], isLoading } = useProducts(
+    const { data = {}, isLoading } = useProducts(
         20,
         false,
         page,

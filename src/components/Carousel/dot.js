@@ -27,7 +27,10 @@ function Dots({ slides, activeIndex }) {
     return (
         <StyledDotsSpan>
             {slides.map((slide, i) => (
-                <Dot key={`${slide.id}-dot`} active={activeIndex === i} />
+                <Dot
+                    key={`${slide.data.main_image.url}-dot`}
+                    active={activeIndex === i}
+                />
             ))}
         </StyledDotsSpan>
     );

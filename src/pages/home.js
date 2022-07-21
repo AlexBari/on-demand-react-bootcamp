@@ -48,7 +48,7 @@ function HomePage() {
                     hasData={products.results && products.results.length > 0}
                 >
                     {!isProductsLoading ? (
-                        <Products products={products.results} />
+                        <Products products={products.results} defaultQty={1} />
                     ) : (
                         <Loading />
                     )}

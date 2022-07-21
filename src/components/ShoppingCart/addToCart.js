@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { AddToCartButton } from '../Products/productCardComponents';
 import AppContext from '../../utils/appContext';
 
-function AddToCart({ product, qty = 1 }) {
+function AddToCart({ product, qty }) {
     const { dispatch } = useContext(AppContext);
     const SendToCart = () => {
         dispatch({ type: 'add', product, quantity: qty });

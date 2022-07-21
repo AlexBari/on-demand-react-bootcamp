@@ -86,7 +86,7 @@ function Slider({ slides = [], autoPlay, isContain, sliderWidth }) {
             >
                 {slides.map((slide) => (
                     <Slide
-                        key={`${slide.id}-slide`}
+                        key={`${slide.data.main_image.url}-slide`}
                         data={slide.data}
                         isContain={isContain}
                     />

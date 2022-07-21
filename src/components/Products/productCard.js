@@ -14,7 +14,7 @@ import {
 import AppContext from '../../utils/appContext';
 import { capitalizeString } from '../../utils/utils';
 
-function ProductCard({ data, id }) {
+function ProductCard({ data, id, qty }) {
     const navigate = useNavigate();
     const { dispatch } = useContext(AppContext);
     const handleSendToCart = () => {
@@ -24,7 +24,7 @@ function ProductCard({ data, id }) {
     return (
         <CardsStyledWrapper>
             <StyledContainerImage>
-                <AddToCart onClick={handleSendToCart} product={data}>
+                <AddToCart onClick={handleSendToCart} product={data} qty={qty}>
                     Add to cart
                 </AddToCart>
                 <StyledPhoto
@@ -63,12 +63,14 @@ ProductCard.propTypes = {
         price: PropTypes.number,
         stock: PropTypes.number
     }),
-    id: PropTypes.string
+    id: PropTypes.string,
+    qty: PropTypes.number
 };
 
 ProductCard.defaultProps = {
     data: {},
-    id: ''
+    id: '',
+    qty: undefined
 };
 
 export default ProductCard;

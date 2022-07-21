@@ -149,15 +149,13 @@ describe('Product List Page tests: ', () => {
             }
         });
 
-        const { debug } = render(
+        render(
             <AppContext.Provider value={mockDispatch}>
                 <Router>
                     <ProductsPage />
                 </Router>
             </AppContext.Provider>
         );
-
-        debug();
 
         await waitFor(async () => {
             expect(CategoriesSpy).toBeCalledTimes(2);
@@ -828,7 +826,7 @@ describe('Product List Page tests: ', () => {
             }
         });
 
-        const { debug } = render(
+        render(
             <AppContext.Provider value={mockDispatch}>
                 <Router>
                     <ProductsPage />
@@ -836,8 +834,6 @@ describe('Product List Page tests: ', () => {
             </AppContext.Provider>
         );
         fireEvent.click(screen.getByTestId('cat-Decorate'));
-        debug();
-
         await waitFor(async () => {
             const products = await screen.findByTestId('productsList');
             expect(products.childElementCount).toBe(1);

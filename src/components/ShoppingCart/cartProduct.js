@@ -38,33 +38,42 @@ function CartProduct({ data, dispatch }) {
     };
 
     return (
-        <DivRowWrapper>
+        <DivRowWrapper data-testid="product-card">
             <ImgDiv>
-                <img src={data.mainimage.url} alt={data.mainimage.alt} />
+                <img
+                    data-testid="cartImage"
+                    src={data.mainimage.url}
+                    alt={data.mainimage.alt}
+                />
             </ImgDiv>
             <ProductBodyDiv>
                 <TitlePriceDiv>
-                    <Title>{data.name}</Title>
-                    <Price>
+                    <Title data-testid="cartName">{data.name}</Title>
+                    <Price data-testid="cartPriceStock">
                         ${data.price} - Stock: {data.stock}
                     </Price>
                 </TitlePriceDiv>
-                <InputQtyWrapper style={{ width: '100%' }}>
-                    <QtyButton onClick={decrementCount} disabled={qty === 1}>
+                <InputQtyWrapper style={{ width: '100%' }} data-testid="qtyDiv">
+                    <QtyButton
+                        onClick={decrementCount}
+                        disabled={qty === 1}
+                        data-testid="cartDecrement"
+                    >
                         -
                     </QtyButton>
-                    <QtyDiv>{qty}</QtyDiv>
+                    <QtyDiv data-testid="productQty">{qty}</QtyDiv>
                     <QtyButton
                         onClick={incrementCount}
                         disabled={qty === data.stock}
+                        data-testid="cartIncrement"
                     >
                         +
                     </QtyButton>
                 </InputQtyWrapper>
-                <Price style={{ fontWeight: 'bolder' }}>
+                <Price style={{ fontWeight: 'bolder' }} data-testid="subtotal">
                     ${data.price * qty}{' '}
                 </Price>
-                <TrashcanDiv onClick={removeProduct}>
+                <TrashcanDiv onClick={removeProduct} data-testid="bsTrash">
                     <BsTrash />
                 </TrashcanDiv>
             </ProductBodyDiv>

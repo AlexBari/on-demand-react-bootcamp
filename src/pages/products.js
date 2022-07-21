@@ -27,8 +27,8 @@ function ProductsPage() {
             : []
     );
 
-    const { data = [], isLoading } = useProducts(12, false, page);
-    const { data: ftCategories = [] } = useFeaturedCategories(30);
+    const { data = {}, isLoading } = useProducts(12, false, page);
+    const { data: ftCategories = {} } = useFeaturedCategories(30);
     const tmpCats = useMemo(
         () =>
             ftCategories.results &&
@@ -95,7 +95,7 @@ function ProductsPage() {
                     data-testid="productsList"
                 >
                     {!isLoading ? (
-                        <Products products={products} />
+                        <Products products={products} defaultQty={1} />
                     ) : (
                         <Loading />
                     )}

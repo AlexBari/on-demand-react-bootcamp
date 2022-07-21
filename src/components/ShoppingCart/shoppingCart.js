@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CartProduct from './cartProduct';
-import AppContext from '../../utils/appContext';
+import AppContext, { useAppContext } from '../../utils/appContext';
 import {
     CartEmptyDiv,
     CheckoutButton,
@@ -11,7 +11,7 @@ import {
 
 function ShoppingCart() {
     const navigate = useNavigate();
-    const { state, dispatch } = useContext(AppContext);
+    const { state, dispatch } = useAppContext(AppContext);
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
 
