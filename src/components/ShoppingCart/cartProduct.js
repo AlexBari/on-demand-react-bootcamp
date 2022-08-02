@@ -30,11 +30,7 @@ function CartProduct({ data, dispatch }) {
     };
 
     const removeProduct = () => {
-        if (
-            // eslint-disable-next-line no-alert
-            window.confirm('Are you sure that you want to remove this product?')
-        )
-            dispatch({ type: 'remove', product: data, quantity: qty });
+        dispatch({ type: 'remove', product: data, quantity: qty });
     };
 
     return (

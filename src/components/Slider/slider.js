@@ -1,6 +1,5 @@
 /* eslint-disable consistent-return */
 import React, { useState, useRef, useEffect } from 'react';
-import { SliderCSS } from './styled';
 import PropTypes from 'prop-types';
 import SliderCSS from './styled';
 import SliderContent from './sliderContent';

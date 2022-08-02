@@ -17,17 +17,27 @@ export function cartReducer(state, payload) {
                 const newArray = state.products.filter(
                     (prd) => prd.name !== payload.product.name
                 );
+                const tmpArray = [...newArray, addObj];
                 return {
-                    totalOfItems: state.totalOfItems + payload.quantity,
-                    products: [...newArray, addObj]
+                    totalOfItems: tmpArray.reduce(
+                        (acc, obj) => acc + obj.numberOfItems,
+                        0
+                    ),
+                    products: tmpArray.sort((a, b) =>
+                        a.name > b.name ? 1 : -1
+                    )
                 };
             }
+            const tmpArray = [
+                ...state.products,
+                { ...payload.product, numberOfItems: payload.quantity }
+            ];
             return {
-                totalOfItems: state.totalOfItems + payload.quantity,
-                products: [
-                    ...state.products,
-                    { ...payload.product, numberOfItems: payload.quantity }
-                ]
+                totalOfItems: tmpArray.reduce(
+                    (acc, obj) => acc + obj.numberOfItems,
+                    0
+                ),
+                products: tmpArray.sort((a, b) => (a.name > b.name ? 1 : -1))
             };
         }
         case 'substract': {
@@ -42,17 +52,27 @@ export function cartReducer(state, payload) {
                 const newArray = state.products.filter(
                     (prd) => prd.name !== payload.product.name
                 );
+                const tmpArray = [...newArray, removeObj];
                 return {
-                    totalOfItems: state.totalOfItems - payload.quantity,
-                    products: [...newArray, removeObj]
+                    totalOfItems: tmpArray.reduce(
+                        (acc, obj) => acc + obj.numberOfItems,
+                        0
+                    ),
+                    products: tmpArray.sort((a, b) =>
+                        a.name > b.name ? 1 : -1
+                    )
                 };
             }
+            const tmpArray = [
+                ...state.products,
+                { ...payload.product, numberOfItems: payload.quantity }
+            ];
             return {
-                totalOfItems: state.totalOfItems - payload.quantity,
-                products: [
-                    ...state.products,
-                    { ...payload.product, numberOfItems: payload.quantity }
-                ]
+                totalOfItems: tmpArray.reduce(
+                    (acc, obj) => acc + obj.numberOfItems,
+                    0
+                ),
+                products: tmpArray.sort((a, b) => (a.name > b.name ? 1 : -1))
             };
         }
         case 'remove': {
@@ -60,8 +80,13 @@ export function cartReducer(state, payload) {
                 (itm) => itm.name !== payload.product.name
             );
             return {
-                totalOfItems: state.totalOfItems - payload.totalOfItems,
-                products: newProductsArray
+                totalOfItems: newProductsArray.reduce(
+                    (acc, obj) => acc + obj.numberOfItems,
+                    0
+                ),
+                products: newProductsArray.sort((a, b) =>
+                    a.name > b.name ? 1 : -1
+                )
             };
         }
         default:
