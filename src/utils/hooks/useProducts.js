@@ -3,7 +3,15 @@ import useLatestAPI from './useLatestAPI';
 import { API_BASE_URL } from '../constants';
 
 // eslint-disable-next-line default-param-last
-function useProducts(pageSize, isFeatured, page = '1', productId, searchTerm) {
+function useProducts(
+    pageSize,
+    isFeatured,
+    // eslint-disable-next-line default-param-last
+    page = '1',
+    productId,
+    searchTerm,
+    filter
+) {
     const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
     const [products, setProducts] = useState(() => ({
         data: {},
@@ -28,12 +36,22 @@ function useProducts(pageSize, isFeatured, page = '1', productId, searchTerm) {
             )}`;
         } else {
             url += `&q=${encodeURIComponent(
-                '[[at(document.type, "product")]]'
+                '[[:d=at(document.type, "product")]]'
             )}${
                 isFeatured
                     ? encodeURIComponent(
                           '&q=[[at(document.tags,["Featured"])]]'
                       )
+                    : ''
+            }${
+                filter && filter.length > 0
+                    ? `&q=${encodeURIComponent(
+                          `[[any(my.product.category,${
+                              filter.length === 1
+                                  ? `["${filter[0]}"]`
+                                  : `["${filter.join('","')}"]`
+                          })]]`
+                      )}`
                     : ''
             }&lang=en-us&pageSize=${pageSize}&page=${page}`;
         }
@@ -66,7 +84,8 @@ function useProducts(pageSize, isFeatured, page = '1', productId, searchTerm) {
         isFeatured,
         page,
         productId,
-        searchTerm
+        searchTerm,
+        filter
     ]);
 
     return products;

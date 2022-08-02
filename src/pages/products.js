@@ -27,7 +27,14 @@ function ProductsPage() {
             : []
     );
 
-    const { data = {}, isLoading } = useProducts(12, false, page);
+    const { data = {}, isLoading } = useProducts(
+        12,
+        false,
+        page,
+        undefined,
+        undefined,
+        query
+    );
     const { data: ftCategories = {} } = useFeaturedCategories(30);
     const tmpCats = useMemo(
         () =>
@@ -39,35 +46,25 @@ function ProductsPage() {
     const onFilteredProducts = (category, action) => {
         switch (action) {
             case 'add':
-                setQuery((prev) => [...prev, category]);
+                setQuery((prev) => [...prev, category.toLowerCase()]);
                 break;
             case 'remove':
-                setQuery([...query.filter((obj) => obj !== category)]);
+                setQuery([
+                    ...query.filter((obj) => obj !== category.toLowerCase())
+                ]);
                 break;
             default:
                 break;
         }
+        setPage(1);
     };
 
     useEffect(() => {
         if (ftCategories.results) {
             setFilteredCategories(tmpCats);
         }
-        if (query.length > 0 && data.results && data.results.length > 0) {
-            const filtered = query.reduce((previousValue, currentValue) => {
-                const arr = data.results.filter(
-                    (prd) =>
-                        prd.data.category.slug.toLowerCase() ===
-                        currentValue.toLowerCase()
-                );
-                return [...previousValue, ...arr];
-            }, []);
-            setProducts(filtered);
-            setTotalPages(data.total_pages);
-        } else {
-            setProducts(data.results);
-            setTotalPages(data.total_pages);
-        }
+        setProducts(data.results);
+        setTotalPages(data.total_pages);
     }, [data.results, tmpCats, ftCategories, query, data.total_pages]);
 
     return (

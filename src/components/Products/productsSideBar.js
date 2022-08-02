@@ -10,16 +10,19 @@ const ProductsSideBar = ({
 }) => {
     const onSelectCategory = (e, obj) => {
         if (e.target.classList.contains('active')) {
-            e.target.classList.remove('active');
             filteringProducts(obj, 'remove');
         } else {
-            e.target.classList.add('active');
             filteringProducts(obj, 'add');
         }
     };
 
-    const isCategorySelected = (category) =>
-        categoriesSelected.filter((cat) => cat === category).length > 0;
+    const isCategorySelected = (category) => {
+        const tmp = categoriesSelected.filter(
+            (cat) => cat === category.toLowerCase()
+        );
+        console.log(categoriesSelected, category, tmp);
+        return tmp.length > 0 ? 'active' : '';
+    };
 
     return categories.map((obj) => (
         <SideBarCategoryRow
@@ -27,7 +30,7 @@ const ProductsSideBar = ({
             key={`cat-${obj}`}
             data-testid={`cat-${obj}`}
             onClick={(e) => onSelectCategory(e, obj)}
-            className={isCategorySelected(obj) && 'active'}
+            className={isCategorySelected(obj)}
         >
             {obj}
         </SideBarCategoryRow>
