@@ -1,19 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StyledWrapperNF = styled.div`
-    position: relative;
-    width: 100%;
-    height: 80%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-`;
-
-const StyledH1 = styled.h1`
-    font-weight: bolder;
-    font-size: 6rem;
-`;
+import { StyledH1, StyledWrapperNF } from './styled';
 
 export const NotFound = () => {
     return (

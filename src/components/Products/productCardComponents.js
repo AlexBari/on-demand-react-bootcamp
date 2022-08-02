@@ -53,7 +53,7 @@ export const Price = styled.div`
     margin: 6px 0;
 `;
 
-export const AddToCart = styled.button`
+export const AddToCartButton = styled.button`
     width: ${ props => props.width ? props.width : '100%'};
     justify-content: center;
     font-weight: bold;

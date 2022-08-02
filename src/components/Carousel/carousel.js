@@ -10,7 +10,7 @@ import Arrow from '../Slider/arrow';
 const CarouselCSS = styled.div`
   position: relative;
   height: 50vw;
-  width: 95vw;
+  width: 90vw;
   margin: 0 auto;
   overflow: hidden;
   background: #fff;
