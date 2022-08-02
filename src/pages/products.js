@@ -39,18 +39,26 @@ function ProductsPage() {
     const tmpCats = useMemo(
         () =>
             ftCategories.results &&
-            ftCategories.results.map((ctg) => capitalizeString(ctg.data.name)),
+            ftCategories.results.map((ctg) => ({
+                id: ctg.id,
+                name: capitalizeString(ctg.data.name)
+            })),
         [ftCategories]
     );
 
     const onFilteredProducts = (category, action) => {
         switch (action) {
             case 'add':
-                setQuery((prev) => [...prev, category.toLowerCase()]);
+                setQuery((prev) => [
+                    ...prev,
+                    { id: category.id, name: category.name.toLowerCase() }
+                ]);
                 break;
             case 'remove':
                 setQuery([
-                    ...query.filter((obj) => obj !== category.toLowerCase())
+                    ...query.filter(
+                        (obj) => obj.name !== category.name.toLowerCase()
+                    )
                 ]);
                 break;
             default:

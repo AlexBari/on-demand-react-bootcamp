@@ -46,11 +46,9 @@ function useProducts(
             }${
                 filter && filter.length > 0
                     ? `&q=${encodeURIComponent(
-                          `[[any(my.product.category,${
-                              filter.length === 1
-                                  ? `["${filter[0]}"]`
-                                  : `["${filter.join('","')}"]`
-                          })]]`
+                          `[[any(my.product.category,[${filter.map(
+                              (obj) => `"${obj.id}"`
+                          )}])]]`
                       )}`
                     : ''
             }&lang=en-us&pageSize=${pageSize}&page=${page}`;

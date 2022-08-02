@@ -18,7 +18,7 @@ const ProductsSideBar = ({
 
     const isCategorySelected = (category) => {
         const tmp = categoriesSelected.filter(
-            (cat) => cat === category.toLowerCase()
+            (cat) => cat.name === category.name.toLowerCase()
         );
         console.log(categoriesSelected, category, tmp);
         return tmp.length > 0 ? 'active' : '';
@@ -27,12 +27,12 @@ const ProductsSideBar = ({
     return categories.map((obj) => (
         <SideBarCategoryRow
             // eslint-disable-next-line react/no-array-index-key
-            key={`cat-${obj}`}
-            data-testid={`cat-${obj}`}
+            key={`cat-${obj.id}`}
+            data-testid={`cat-${obj.name}`}
             onClick={(e) => onSelectCategory(e, obj)}
             className={isCategorySelected(obj)}
         >
-            {obj}
+            {obj.name}
         </SideBarCategoryRow>
     ));
 };
