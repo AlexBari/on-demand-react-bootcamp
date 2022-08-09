@@ -8,11 +8,15 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.27.2",
+    "history": "^5.3.0",
     "jest": "^26.6.0",
     "moment": "^2.29.3",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.4.0",
+    "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
@@ -47,5 +51,19 @@
     "transform": {
       "^.+\\.js$": "babel-jest"
     }
+  },
+  "devDependencies": {
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest-fetch-mock": "^3.0.3",
+    "prettier": "2.7.1"
   }
 }

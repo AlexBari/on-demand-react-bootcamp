@@ -1,38 +1,42 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SideBarCategoryRow } from './productsComponents';
 
-const ProductsSideBar = ({ categories, filteringProducts, categoriesSelected }) => {
+const ProductsSideBar = ({
+    categories,
+    filteringProducts,
+    categoriesSelected
+}) => {
     const onSelectCategory = (e, obj) => {
         if (e.target.classList.contains('active')) {
-            e.target.classList.remove('active');
-            filteringProducts(obj, 'remove')
+            filteringProducts(obj, 'remove');
         } else {
-            e.target.classList.add('active');
-            filteringProducts(obj, 'add')
+            filteringProducts(obj, 'add');
         }
     };
 
     const isCategorySelected = (category) => {
-        return categoriesSelected.filter((cat) => cat === category).length > 0;
+        const tmp = categoriesSelected.filter(
+            (cat) => cat.name === category.name.toLowerCase()
+        );
+        return tmp.length > 0 ? 'active' : '';
     };
 
-    return (
-        categories.map((obj, i) =>
-            <SideBarCategoryRow
-                key={'cat-' + i}
-                onClick={(e) => onSelectCategory(e, obj)}
-                className={
-                    isCategorySelected(obj) && 'active'
-                }
-            >
-                {obj}
-            </SideBarCategoryRow>
-        )
-    );
+    return categories.map((obj) => (
+        <SideBarCategoryRow
+            // eslint-disable-next-line react/no-array-index-key
+            key={`cat-${obj.id}`}
+            data-testid={`cat-${obj.name}`}
+            onClick={(e) => onSelectCategory(e, obj)}
+            className={isCategorySelected(obj)}
+        >
+            {obj.name}
+        </SideBarCategoryRow>
+    ));
 };
 
-ProductsSideBar.propType = {
+ProductsSideBar.propTypes = {
     categories: PropTypes.array,
     filteringProducts: PropTypes.func,
     categoriesSelected: PropTypes.array

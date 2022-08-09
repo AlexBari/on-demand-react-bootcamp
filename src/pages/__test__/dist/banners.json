@@ -1,0 +1,61 @@
+{
+  "isLoading": false,
+  "data": {
+      "page": 1,
+      "results_per_page": 5,
+      "results_size": 3,
+      "total_results_size": 3,
+      "total_pages": 1,
+      "next_page": null,
+      "prev_page": null,
+      "results": [
+      {
+              "id": "YWYmORIAAC4A3Qio",
+              "uid": null,
+              "url": null,
+              "type": "banner",
+              "href": "https: //wizeline-academy.cdn.prismic.io/api/v2/documents/search?ref=YZaBvBIAACgAvnOP&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YWYmORIAAC4A3Qio%22%29+%5D%5D",
+              "tags": [],
+              "first_publication_date": "2021-10-13T00: 20: 12+0000",
+              "last_publication_date": "2021-10-13T00: 28: 15+0000",
+              "slugs": [
+                  "a-great-style---living-room",
+                  "un-gran-estilo---sala"
+        ],
+              "linked_documents": [],
+              "lang": "en-us",
+              "alternate_languages": [
+          {
+                      "id": "YWYn5xIAACkA3RA3",
+                      "type": "banner",
+                      "lang": "es-mx"
+          }
+        ],
+              "data": {
+                  "title": "A GREAT STYLE - LIVING ROOM",
+                  "description": [
+            {
+                          "type": "paragraph",
+                          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                          "spans": []
+            }
+          ],
+                  "cta_link": "#",
+                  "cta_target": "_parent",
+                  "main_image": {
+                      "dimensions": {
+                          "width": 1440,
+                          "height": 705
+            },
+                      "alt": "A GREAT STYLE - LIVING ROOM",
+                      "copyright": null,
+                      "url": "https: //images.prismic.io/wizeline-academy/305e2781-5f25-4c00-bef7-1041b49def37_banner-1-2.jpeg?auto=compress,format&rect=103,0,1226,600&w=1440&h=705"
+          }
+        }
+      }
+    ],
+      "version": "6dac34e",
+      "license":
+          "This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit http: //creativecommons.org/licenses/by/4.0/."
+  }
+}

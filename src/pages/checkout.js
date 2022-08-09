@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../App';
 import { Title } from '../components/Products/productCardComponents';
+import AppContext from '../utils/appContext';
 import {
     CheckoutMainWrapper,
     CheckoutDiv,
@@ -19,7 +19,7 @@ import {
     Price
 } from './styled';
 
-const CheckoutPage = () => {
+function CheckoutPage() {
     const navigate = useNavigate();
     const { state } = useContext(AppContext);
     const [cart, setCart] = useState([]);
@@ -34,9 +34,14 @@ const CheckoutPage = () => {
     };
 
     useEffect(() => {
-        setCart(state.products)
-        setTotal(state.products.reduce((prv, obj) => prv + obj.price * obj.numberOfItems, 0))
-    }, [state])
+        setCart(state.products);
+        setTotal(
+            state.products.reduce(
+                (prv, obj) => prv + obj.price * obj.numberOfItems,
+                0
+            )
+        );
+    }, [state]);
 
     return (
         <CheckoutMainWrapper>
@@ -46,41 +51,67 @@ const CheckoutPage = () => {
             <CheckoutDiv>
                 <FormWrapper>
                     <FormCheckout onSubmit={handleSubmit}>
-                        <FormLabel> Name:
-                            <FormInput type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                        <FormLabel>
+                            {' '}
+                            Name:
+                            <FormInput
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
                         </FormLabel>
-                        <FormLabel> Email:
-                            <FormInput type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <FormLabel>
+                            {' '}
+                            Email:
+                            <FormInput
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </FormLabel>
-                        <FormLabel> Zip Code:
-                            <FormInput type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} />
+                        <FormLabel>
+                            {' '}
+                            Zip Code:
+                            <FormInput
+                                type="text"
+                                value={zipCode}
+                                onChange={(e) => setZipCode(e.target.value)}
+                            />
                         </FormLabel>
-                        <FormLabel> Order notes:
-                            <FormTextarea value={orderNotes} maxLength='250' onChange={(e) => setOrderNotes(e.target.value)} />
+                        <FormLabel>
+                            {' '}
+                            Order notes:
+                            <FormTextarea
+                                value={orderNotes}
+                                maxLength="250"
+                                onChange={(e) => setOrderNotes(e.target.value)}
+                            />
                         </FormLabel>
                     </FormCheckout>
                 </FormWrapper>
                 <SummaryTableWrapper>
-                    {
-                        <>
-                            {
-                                cart.map((prd) => (
-                                    <CheckoutProduct key={`checkoutProduct-${prd.name}`}>
-                                        <Title>{prd.name} - Qty: {prd.numberOfItems}</Title>
-                                        <Price>${prd.price * prd.numberOfItems} </Price>
-                                    </CheckoutProduct>
-                                ))
-                            }
-                            <CheckoutTotal>
-                                <h2>Total: $ {total}</h2>
-                            </CheckoutTotal>
-                        </>
-                    }
+                    <>
+                        {cart.map((prd) => (
+                            <CheckoutProduct
+                                key={`checkoutProduct-${prd.name}`}
+                            >
+                                <Title>
+                                    {prd.name} - Qty: {prd.numberOfItems}
+                                </Title>
+                                <Price>${prd.price * prd.numberOfItems} </Price>
+                            </CheckoutProduct>
+                        ))}
+                        <CheckoutTotal>
+                            <h2>Total: $ {total}</h2>
+                        </CheckoutTotal>
+                    </>
                 </SummaryTableWrapper>
             </CheckoutDiv>
             <MainButtonWrapper>
                 <ButtonWrapper>
-                    <StandardButton onClick={() => navigate('/cart')}>Back to Cart</StandardButton>
+                    <StandardButton onClick={() => navigate('/cart')}>
+                        Back to Cart
+                    </StandardButton>
                 </ButtonWrapper>
                 <ButtonWrapper>
                     <StandardButton>Place Order</StandardButton>
@@ -88,6 +119,6 @@ const CheckoutPage = () => {
             </MainButtonWrapper>
         </CheckoutMainWrapper>
     );
-};
+}
 
 export default CheckoutPage;

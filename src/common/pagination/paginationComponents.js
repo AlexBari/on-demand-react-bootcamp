@@ -20,7 +20,11 @@ export const PageNumbersLi = styled.li`
     &.active {
         color: black;
         border-radius: 20px;
-        background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+        background: linear-gradient(
+            145deg,
+            rgba(121, 206, 209, 1) 57%,
+            rgba(255, 255, 255, 1) 98%
+        );
     }
     &:hover {
         color: black;

@@ -19,16 +19,19 @@ export const StyledContainerImage = styled.div`
     position relative;
 `;
 
-
 export const CardsStyledWrapper = styled.div`
-  max-width: 250px;
-  padding: 1rem;
-  position: relative;
-  background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
-  height: auto;
-  display: block;
-  align-self: center;
-  border-radius: 5px;
+    max-width: 250px;
+    padding: 1rem;
+    position: relative;
+    background: linear-gradient(
+        145deg,
+        rgba(121, 206, 209, 1) 57%,
+        rgba(255, 255, 255, 1) 98%
+    );
+    height: auto;
+    display: block;
+    align-self: center;
+    border-radius: 5px;
 `;
 
 export const StyledPhoto = styled.img`
@@ -36,7 +39,7 @@ export const StyledPhoto = styled.img`
     height: 50%;
     object-fit: contain;
     border: 1px solid white;
-`
+`;
 export const Title = styled.h2`
     font-weight: bold;
     font-size: 20px;
@@ -54,16 +57,20 @@ export const Price = styled.div`
 `;
 
 export const AddToCartButton = styled.button`
-    width: ${ props => props.width ? props.width : '100%'};
+    width: ${(props) => (props.width ? props.width : '100%')};
     justify-content: center;
     font-weight: bold;
     height: 25px;
     align-items: center;
     margin-bottom: 10px;
-    border: 3px solid #79CED1;
+    border: 3px solid #79ced1;
     background: white;
     &:hover {
-        background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+        background: linear-gradient(
+            145deg,
+            rgba(121, 206, 209, 1) 57%,
+            rgba(255, 255, 255, 1) 98%
+        );
     }
 `;
 
@@ -75,10 +82,20 @@ export const SeeDetails = styled.button`
     align-items: center;
     border-top-width: 4px;
     border-top-style: solid;
-    border-image: linear-gradient(80deg, rgba(255,255,255,1) 5%, rgba(121,206,209,1) 50%, rgba(242,250,250,0.1) 95%) 1;
+    border-image: linear-gradient(
+            80deg,
+            rgba(255, 255, 255, 1) 5%,
+            rgba(121, 206, 209, 1) 50%,
+            rgba(242, 250, 250, 0.1) 95%
+        )
+        1;
     background: white;
     border-radius: 1rem;
     &:hover {
-        background: linear-gradient(145deg, rgba(121,206,209,1) 57%, rgba(255,255,255,1) 98%);
+        background: linear-gradient(
+            145deg,
+            rgba(121, 206, 209, 1) 57%,
+            rgba(255, 255, 255, 1) 98%
+        );
     }
 `;
