@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import useLatestAPI from './useLatestAPI';
 import { API_BASE_URL } from '../constants';
 
@@ -19,7 +20,7 @@ function useFeaturedCategories(pageSize) {
             try {
                 setFeaturedCategories({ data: {}, isLoading: true });
 
-                const response = await fetch(
+                const response = await axios.get(
                     `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
                         '[[at(document.type, "category")]]'
                     )}&lang=en-us&pageSize=${pageSize}`,
@@ -27,8 +28,7 @@ function useFeaturedCategories(pageSize) {
                         signal: controller.signal
                     }
                 );
-                const data = await response.json();
-
+                const { data } = response;
                 setFeaturedCategories({ data, isLoading: false });
             } catch (err) {
                 setFeaturedCategories({ data: {}, isLoading: false });

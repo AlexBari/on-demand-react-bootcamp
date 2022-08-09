@@ -37,7 +37,7 @@ export const NavShoppingCart = styled(AiOutlineShoppingCart)`
     display: flex;
     font-size: 1.8rem;
     cursor: pointer;
-    padding: 3px 0px 3px 6px;
+    padding: 3px 0px 3px 0px;
     align-items: center;
     transition: 0.4s;
     background: none;
@@ -135,7 +135,7 @@ export const NumItmDiv = styled.div`
 export const ShoppingCartWrapper = styled.div`
     display: flex;
     align-items: center;
-    padding: 0 5px;
+    padding: 0 10px;
     &:hover {
         color: black;
         border-radius: 15px;

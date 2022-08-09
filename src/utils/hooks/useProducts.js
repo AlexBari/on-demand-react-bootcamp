@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import useLatestAPI from './useLatestAPI';
 import { API_BASE_URL } from '../constants';
 
@@ -58,10 +59,10 @@ function useProducts(
             try {
                 setProducts({ data: {}, isLoading: true });
 
-                const response = await fetch(url, {
+                const response = await axios.get(url, {
                     signal: controller.signal
                 });
-                const data = await response.json();
+                const { data } = response;
 
                 setProducts({ data, isLoading: false });
             } catch (err) {

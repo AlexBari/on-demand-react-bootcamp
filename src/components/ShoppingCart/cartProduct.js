@@ -12,7 +12,7 @@ import {
     ImgDiv,
     ProductBodyDiv,
     TitlePriceDiv,
-    TrashcanDiv
+    TrashcanButton
 } from './styled';
 
 function CartProduct({ data, dispatch }) {
@@ -69,9 +69,9 @@ function CartProduct({ data, dispatch }) {
                 <Price style={{ fontWeight: 'bolder' }} data-testid="subtotal">
                     ${data.price * qty}{' '}
                 </Price>
-                <TrashcanDiv onClick={removeProduct} data-testid="bsTrash">
+                <TrashcanButton onClick={removeProduct} data-testid="bsTrash">
                     <BsTrash />
-                </TrashcanDiv>
+                </TrashcanButton>
             </ProductBodyDiv>
         </DivRowWrapper>
     );

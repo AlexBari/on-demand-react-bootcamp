@@ -20,7 +20,6 @@ const ProductsSideBar = ({
         const tmp = categoriesSelected.filter(
             (cat) => cat.name === category.name.toLowerCase()
         );
-        console.log(categoriesSelected, category, tmp);
         return tmp.length > 0 ? 'active' : '';
     };
 

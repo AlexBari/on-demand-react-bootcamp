@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/searchBar';
 import SidebarNav from '../../components/SidebarNav/sidebarNav';
@@ -17,16 +17,11 @@ import AppContext from '../../utils/appContext';
 
 function Header() {
     const { state } = useContext(AppContext);
-    const [numItems, setNumItems] = useState(0);
     const navigate = useNavigate();
     const location = useLocation();
     const RedirectHandler = () => {
         navigate('/');
     };
-
-    useEffect(() => {
-        setNumItems(state.totalOfItems);
-    }, [state]);
 
     return (
         <NavBar>
@@ -45,7 +40,9 @@ function Header() {
                     className={location.pathname === '/cart' ? 'active' : ''}
                 >
                     <NavShoppingCart />
-                    {numItems > 0 && <NumItmDiv>{numItems}</NumItmDiv>}
+                    {state.totalOfItems > 0 && (
+                        <NumItmDiv>{state.totalOfItems}</NumItmDiv>
+                    )}
                 </ShoppingCartWrapper>
             </NavStyledWrapper>
         </NavBar>

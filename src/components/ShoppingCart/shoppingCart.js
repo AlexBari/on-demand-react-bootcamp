@@ -45,7 +45,7 @@ function ShoppingCart() {
                     ))}
                     <TotalDivWrapper>
                         <div>
-                            <h2>Total: $ {total}</h2>
+                            <h2 data-testid="cartTotal">Total: $ {total}</h2>
                         </div>
                         <div>
                             <CheckoutButton onClick={handleCheckout}>

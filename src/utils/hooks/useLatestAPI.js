@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 
@@ -13,10 +14,10 @@ function useLatestAPI() {
             try {
                 setApiMetadata(INITIAL_API_METADATA);
 
-                const response = await fetch(API_BASE_URL, {
+                const response = await axios.get(API_BASE_URL, {
                     signal: controller.signal
                 });
-                const { refs: [{ ref } = {}] = [] } = await response.json();
+                const { refs: [{ ref } = {}] = [] } = response.data;
 
                 setApiMetadata({ ref, isLoading: false });
             } catch (err) {

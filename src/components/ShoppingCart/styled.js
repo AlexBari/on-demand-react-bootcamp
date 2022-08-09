@@ -65,7 +65,7 @@ export const TitlePriceDiv = styled.div`
     }
 `;
 
-export const TrashcanDiv = styled.div`
+export const TrashcanButton = styled.button`
     font-size: 1.8rem;
     padding: 5px;
     display: flex;
@@ -73,6 +73,7 @@ export const TrashcanDiv = styled.div`
     justify-content: center;
     border: 3px solid #79ced1;
     border-radius: 15px;
+    background: none;
     &:hover {
         border: 3px solid red;
         color: white;
